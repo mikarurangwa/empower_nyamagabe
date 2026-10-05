@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Log in • Empower Nyamagabe</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="auth-page">
+  <div class="auth-shell">
+    <section class="auth-brand" aria-label="Empower Nyamagabe introduction">
+      <div class="auth-brand-inner">
+        <div class="auth-logo"><i class="fas fa-hands-helping"></i>Empower Nyamagabe</div>
+        <h1>Welcome back.</h1>
+        <p>
+          Log in to support verified families in Nyamagabe District, trace your donations, or (for local leaders) verify households in your sector.
+        </p>
+
+        <div class="auth-points">
+          <div class="auth-point">
+            <i class="fas fa-clipboard-check"></i>
+            <div>
+              <strong>Every donation traced</strong>
+              <div>See the family code, need and payment reference behind each gift.</div>
+            </div>
+          </div>
+          <div class="auth-point">
+            <i class="fas fa-shield-heart"></i>
+            <div>
+              <strong>Secure by design</strong>
+              <div>Payments happen on Flutterwave's page. Your Mobile Money or card details never touch this site.</div>
+            </div>
+          </div>
+        </div>
+
+        <a class="auth-back" href="/"><i class="fas fa-arrow-left"></i> Back to website</a>
+      </div>
+    </section>
+
+    <section class="auth-form-wrap" aria-label="Log in form">
+      <div class="auth-card">
+        <div class="auth-card-header">
+          <h2>Log in</h2>
+          <p>Use your phone number or email, and your password.</p>
+        </div>
+
+        <div id="authAlert" class="auth-alert" role="alert"></div>
+
+        <form id="loginPageForm" autocomplete="on">
+          <div class="auth-field">
+            <i class="fas fa-user"></i>
+            <input id="loginIdentifier" name="identifier" type="text" placeholder="Phone number or email" required autocomplete="username"/>
+          </div>
+
+          <div class="auth-field" style="margin-bottom: 0.75rem;">
+            <i class="fas fa-lock"></i>
+            <input id="loginPassword" name="password" type="password" placeholder="Password" required autocomplete="current-password"/>
+            <button type="button" class="btn btn-secondary" data-toggle-password="loginPassword"
+              style="position:absolute; right:10px; top:50%; transform:translateY(-50%); padding:0.5rem 0.65rem; border-radius:12px;">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+
+          <input type="hidden" id="loginRole" value="donor" />
+
+          <div class="auth-row">
+            <label><input type="checkbox" id="rememberMe" checked/> Remember me</label>
+            <a class="auth-link" href="mailto:rurangwamika98@gmail.com?subject=Empower%20Nyamagabe%20-%20Password%20help">Need help?</a>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <div style="font-weight:800; color:#2c5530; margin-bottom:0.45rem;">Log in as</div>
+            <div class="auth-toggle" role="tablist" aria-label="Role selector">
+              <button id="roleDonor" type="button" class="active"><i class="fas fa-heart"></i> Donor</button>
+              <button id="roleLeader" type="button"><i class="fas fa-people-roof"></i> Local leader</button>
+              <button id="roleAdmin" type="button"><i class="fas fa-user-shield"></i> Admin</button>
+            </div>
+          </div>
+
+          <div class="auth-actions">
+            <button id="loginSubmit" type="submit" class="btn btn-primary">
+              <i class="fas fa-right-to-bracket"></i> Log in
+            </button>
+          </div>
+
+          <div style="margin-top: 0.85rem; text-align:center;">
+            <button type="button" class="btn btn-secondary" id="toggleReset" style="width:100%;">
+              <i class="fas fa-unlock-keyhole"></i> Forgot password?
+            </button>
+          </div>
+
+          <div id="resetPanel" class="auth-reset-panel" style="display:none; margin-top:0.75rem;">
+            <div class="auth-field">
+              <i class="fas fa-envelope"></i>
+              <input id="resetEmail" type="email" placeholder="Email address" autocomplete="email" />
+            </div>
+            <button type="button" class="btn btn-primary" id="resetRequestBtn" style="width:100%; margin-top:0.6rem;">
+              Send reset link
+            </button>
+            <div class="muted" style="margin-top:0.5rem; font-size:0.85rem;">
+              Password reset links are sent by email. If your account uses a phone number only, contact the administrator.
+            </div>
+          </div>
+
+          <div class="auth-divider">New here?</div>
+          <div class="auth-foot">
+            <a class="auth-link" href="/signup">Create an account</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script src="/auth.js" defer></script>
+</body>
+</html>

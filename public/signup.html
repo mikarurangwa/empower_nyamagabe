@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create account • Empower Nyamagabe</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="auth-page">
+  <div class="auth-shell">
+    <section class="auth-brand" aria-label="Empower Nyamagabe introduction">
+      <div class="auth-brand-inner">
+        <div class="auth-logo"><i class="fas fa-hands-helping"></i>Empower Nyamagabe</div>
+        <h1>Create your donor account.</h1>
+        <p>
+          Give to community-verified families for school fees and Mutuelle de Santé, and trace each donation. You can sign up with a phone number or an email address.
+        </p>
+
+        <div class="auth-points">
+          <div class="auth-point">
+            <i class="fas fa-hand-holding-heart"></i>
+            <div>
+              <strong>Donate with confidence</strong>
+              <div>Choose a verified family and follow your contribution.</div>
+            </div>
+          </div>
+          <div class="auth-point">
+            <i class="fas fa-chart-line"></i>
+            <div>
+              <strong>See your impact</strong>
+              <div>Track each gift to the family and need it paid for.</div>
+            </div>
+          </div>
+        </div>
+
+        <a class="auth-back" href="/"><i class="fas fa-arrow-left"></i> Back to website</a>
+      </div>
+    </section>
+
+    <section class="auth-form-wrap" aria-label="Sign up form">
+      <div class="auth-card">
+        <div class="auth-card-header">
+          <h2>Create account</h2>
+          <p>It only takes a minute.</p>
+        </div>
+
+        <div id="authAlert" class="auth-alert" role="alert"></div>
+
+        <form id="signupPageForm" autocomplete="on">
+          <div class="auth-field">
+            <i class="fas fa-user"></i>
+            <input id="signupName" name="name" type="text" placeholder="Full name" required autocomplete="name"/>
+          </div>
+
+          <div class="auth-field">
+            <i class="fas fa-envelope"></i>
+            <input id="signupEmail" name="email" type="email" placeholder="Email address (optional if you give a phone)" autocomplete="email"/>
+          </div>
+
+          <div class="auth-field">
+            <i class="fas fa-phone"></i>
+            <input id="signupPhone" name="phone" type="tel" placeholder="Phone, e.g. 0786 123 456 (optional if you give an email)" autocomplete="tel"/>
+          </div>
+
+          <div class="auth-field" style="margin-bottom: 0.75rem;">
+            <i class="fas fa-lock"></i>
+            <input id="signupPassword" name="password" type="password" placeholder="Password (min 6 characters)" required autocomplete="new-password"/>
+            <button type="button" class="btn btn-secondary" data-toggle-password="signupPassword"
+              style="position:absolute; right:10px; top:50%; transform:translateY(-50%); padding:0.5rem 0.65rem; border-radius:12px;">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+
+          <div class="auth-field">
+            <i class="fas fa-lock"></i>
+            <input id="signupConfirmPassword" name="confirm" type="password" placeholder="Confirm password" required autocomplete="new-password"/>
+            <button type="button" class="btn btn-secondary" data-toggle-password="signupConfirmPassword"
+              style="position:absolute; right:10px; top:50%; transform:translateY(-50%); padding:0.5rem 0.65rem; border-radius:12px;">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+
+          <div class="auth-row" style="margin-top: 0.65rem;">
+            <label>
+              <input type="checkbox" required />
+              I agree to the <a class="auth-link" href="/terms">Terms</a> and <a class="auth-link" href="/privacy">Privacy Policy</a>.
+            </label>
+          </div>
+
+          <div class="auth-actions">
+            <button id="signupSubmit" type="submit" class="btn btn-primary">
+              <i class="fas fa-user-plus"></i> Create account
+            </button>
+          </div>
+
+          <div class="auth-divider">Already have an account?</div>
+          <div class="auth-foot">
+            <a class="auth-link" href="/login">Log in</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script src="/auth.js" defer></script>
+</body>
+</html>

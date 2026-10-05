@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Empower Nyamagabe — a transparent donation platform connecting donors with community-verified vulnerable families in Nyamagabe District, Rwanda, for school fees and Mutuelle de Santé.">
+    <title>Empower Nyamagabe — Transparent Support for Families in Nyamagabe District</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="nav-container">
+    <a class="logo" href="/"><i class="fas fa-hands-helping"></i>Empower Nyamagabe</a>
+    <nav class="nav-menu" aria-label="Main navigation">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#families">Verified Families</a></li>
+        <li><a href="#problem">Why It Matters</a></li>
+        <li><a href="/impact">Live Impact</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/login" class="btn btn-secondary" id="loginBtn">Log in</a>
+      <a href="/signup" class="btn btn-primary" id="signupBtn">Create account</a>
+      <a href="#" class="btn btn-secondary hidden" id="dashboardBtn">Dashboard</a>
+      <a href="#" class="btn btn-secondary hidden" id="logoutBtn">Logout</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#how">How It Works</a>
+    <a href="#families">Verified Families</a>
+    <a href="#problem">Why It Matters</a>
+    <a href="/impact">Live Impact</a>
+    <div class="mobile-auth" id="mobileAuthGuest">
+      <a href="/login" class="btn btn-secondary">Log in</a>
+      <a href="/signup" class="btn btn-primary">Create account</a>
+    </div>
+    <div class="mobile-auth hidden" id="mobileAuthUser">
+      <a href="#" class="btn btn-secondary" id="mobileDashboardBtn">Dashboard</a>
+      <a href="#" class="btn btn-secondary" id="mobileLogoutBtn">Logout</a>
+    </div>
+  </div>
+</header>
+
+<div id="toastMount" class="toast-mount" aria-live="polite" aria-atomic="true"></div>
+
+<!-- MAIN LANDING -->
+<main id="mainContent">
+
+  <div class="pilot-banner" id="pilotBanner" hidden><i class="fas fa-flask"></i> <strong>Pilot version.</strong> Payments run in Flutterwave test mode: no real money moves while the platform is being tested in Nyamagabe District.</div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><i class="fas fa-map-marker-alt"></i> Nyamagabe District, Rwanda</div>
+      <h1>Give to families your<br><em>community</em> has verified.</h1>
+      <p class="hero-subtitle">Empower Nyamagabe connects donors with vulnerable families in Nyamagabe District who need help with school fees or Mutuelle de Santé. Local leaders confirm who needs help, and every payment is traceable to the exact need it paid for.</p>
+      <div class="cta-buttons">
+        <a href="#families" class="btn btn-primary btn-large"><i class="fas fa-hand-holding-heart"></i> See Verified Families</a>
+        <a href="#how" class="btn btn-secondary btn-large">How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-number"><i class="fas fa-book-open"></i></div><div class="hero-stat-label">School fees</div></div>
+        <div class="hero-stat"><div class="hero-stat-number"><i class="fas fa-shield-heart"></i></div><div class="hero-stat-label">Mutuelle de Santé</div></div>
+        <div class="hero-stat"><div class="hero-stat-number"><i class="fas fa-user-check"></i></div><div class="hero-stat-label">Verified by local leaders</div></div>
+        <div class="hero-stat"><div class="hero-stat-number"><i class="fas fa-mobile-screen"></i></div><div class="hero-stat-label">Mobile Money &amp; card</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text">
+          <div class="section-eyebrow">Who we are</div>
+          <h2 class="section-title">Transparent giving, trusted selection</h2>
+          <div class="about-text-body">
+            <p><strong>Empower Nyamagabe</strong> is a web platform built to support vulnerable families in Nyamagabe District with the two costs that most often push children out of school and families out of health cover: <strong>school fees</strong> and <strong>Community Based Health Insurance (Mutuelle de Santé)</strong>.</p>
+            <p>Most donation platforms solve only one half of the trust problem. Some show where money goes but not who was chosen; informal giving is fast but leaves no record. We combine both: <strong>families are confirmed by Umudugudu and Ubudehe leaders</strong> who know them, and <strong>every payment is recorded</strong> against a specific family and need.</p>
+            <p>Empower Nyamagabe is a capstone research pilot. It is being tested with donors, families and local leaders in one sector of the district.</p>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-card">
+            <div class="about-card-inner">
+              <div class="about-card-icon"><i class="fas fa-scale-balanced"></i></div>
+              <h3>Two kinds of trust, one platform</h3>
+              <p>Donors trust <em>who</em> receives help because the community chose them, and trust <em>where</em> their money went because every payment is traceable.</p>
+              <div class="about-pill-row">
+                <span class="about-pill"><i class="fas fa-check"></i> Community-verified</span>
+                <span class="about-pill"><i class="fas fa-check"></i> Traceable payments</span>
+                <span class="about-pill"><i class="fas fa-check"></i> Family privacy protected</span>
+                <span class="about-pill"><i class="fas fa-check"></i> No bank account needed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="mission" id="how">
+    <div class="container">
+      <div class="mission-header">
+        <div class="section-eyebrow">How it works</div>
+        <h2 class="section-title">From verification to a traceable gift</h2>
+        <p class="section-subtitle">Four steps connect a family&rsquo;s need to a donor&rsquo;s gift.</p>
+      </div>
+      <div class="mission-grid steps-grid">
+        <div class="mission-card">
+          <div class="mission-card-icon"><i class="fas fa-people-roof"></i></div>
+          <h3>1. A local leader submits a family</h3>
+          <p>An Umudugudu or Ubudehe committee member records the household&rsquo;s Ubudehe category and its need, with supporting notes.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-card-icon"><i class="fas fa-clipboard-check"></i></div>
+          <h3>2. The family is verified</h3>
+          <p>A leader or the administrator approves or rejects the submission. Only approved families ever appear to donors.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-card-icon"><i class="fas fa-mobile-screen"></i></div>
+          <h3>3. A donor gives through Flutterwave</h3>
+          <p>Pay with Mobile Money or card on Flutterwave&rsquo;s secure page. This platform never sees or stores your payment details.</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-card-icon"><i class="fas fa-route"></i></div>
+          <h3>4. See exactly where it went</h3>
+          <p>Each donation is recorded against a family code and a specific need, with its Flutterwave reference, in your donation history.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERIFIED FAMILIES -->
+  <section class="about families-section" id="families">
+    <div class="container">
+      <div class="mission-header">
+        <div class="section-eyebrow">Verified families</div>
+        <h2 class="section-title">Families waiting for support</h2>
+        <p class="section-subtitle">Every family below was confirmed by local leaders. To protect their dignity we show only an anonymous code, the sector, and the need.</p>
+      </div>
+      <div class="family-filter" role="group" aria-label="Filter families by need">
+        <button type="button" class="chip-btn active" data-family-filter="all">All needs</button>
+        <button type="button" class="chip-btn" data-family-filter="education"><i class="fas fa-book-open"></i> School fees</button>
+        <button type="button" class="chip-btn" data-family-filter="health"><i class="fas fa-shield-heart"></i> Mutuelle de Santé</button>
+      </div>
+      <div class="family-grid" id="publicFamilyGrid"><p class="muted">Loading verified families…</p></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <div class="problem-inner">
+        <div class="problem-text">
+          <div class="section-eyebrow">Why this matters</div>
+          <h2 class="section-title">One problem, two symptoms</h2>
+          <p>Nyamagabe District has a poverty rate of <strong>51.4%</strong>, almost double the national rate of 27.4% (NISR, EICV7). That poverty shows up in two connected ways: children leave school, and families struggle to keep paying for Mutuelle de Santé.</p>
+          <p>A family that cannot cover a health emergency and school costs at the same time is forced to choose. Research in Rwanda links health insurance to fewer children dropping out of school.</p>
+          <ul class="problem-list">
+            <li>
+              <div class="problem-list-icon"><i class="fas fa-school"></i></div>
+              <div class="problem-list-text">
+                <strong>School dropout</strong>
+                <span>Dropout is 7% in primary, 11% in lower secondary and 6% in upper secondary school. Primary repetition is 32%, against 21% nationally.</span>
+              </div>
+            </li>
+            <li>
+              <div class="problem-list-icon"><i class="fas fa-notes-medical"></i></div>
+              <div class="problem-list-text">
+                <strong>Health cover gap</strong>
+                <span>Coverage rose from 75.2% (2017) to 96.1% (2024), but the remaining 3.9% still means about 14,500 people without insurance.</span>
+              </div>
+            </li>
+            <li>
+              <div class="problem-list-icon"><i class="fas fa-eye"></i></div>
+              <div class="problem-list-text">
+                <strong>A trust gap in giving</strong>
+                <span>International platforms need a bank account or card, and cash giving leaves no record. Donors need to trust both who is helped and where money goes.</span>
+              </div>
+            </li>
+          </ul>
+          <p class="source-note">Sources: NISR EICV7 Poverty Profile (2024); Nyamagabe District Development Strategy 2024&ndash;2029.</p>
+        </div>
+        <div class="stats-sidebar">
+          <div class="stat-box"><div class="stat-box-number">51.4%</div><div class="stat-box-label">Poverty rate in Nyamagabe</div></div>
+          <div class="stat-box"><div class="stat-box-number">11%</div><div class="stat-box-label">Lower secondary dropout</div></div>
+          <div class="stat-box"><div class="stat-box-number">~14,500</div><div class="stat-box-label">People still uninsured</div></div>
+          <div class="stat-box"><div class="stat-box-number">96.1%</div><div class="stat-box-label">Health insurance coverage (2024)</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOUNTABILITY -->
+  <section class="impact" id="impact">
+    <div class="container">
+      <div class="impact-inner">
+        <div class="impact-header">
+          <div class="section-eyebrow">How we stay accountable</div>
+          <h2 class="section-title">Built to be checked</h2>
+          <p class="section-subtitle">Accountability is part of the design, not an add-on.</p>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-item">
+            <div class="impact-item-icon"><i class="fas fa-user-check"></i></div>
+            <h3>Community verification</h3>
+            <p>Families are built on Rwanda&rsquo;s Ubudehe classification and confirmed by local leaders. Rejections need a written reason, and every decision is logged.</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-item-icon"><i class="fas fa-route"></i></div>
+            <h3>Traceable donations</h3>
+            <p>Each gift is linked to one family and one need, with its Flutterwave reference and payment status.</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-item-icon"><i class="fas fa-lock"></i></div>
+            <h3>Payment details stay with Flutterwave</h3>
+            <p>Mobile Money numbers, PINs and card numbers are entered only on Flutterwave&rsquo;s page. We store the reference, amount, status, family and purpose.</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-item-icon"><i class="fas fa-user-shield"></i></div>
+            <h3>Dignity and privacy</h3>
+            <p>Donors never see a family&rsquo;s name, phone number or village. Only the need and general location are shown.</p>
+          </div>
+        </div>
+        <div class="impact-cta">
+          <a href="#" class="btn btn-primary btn-large" id="joinUsBtn"><i class="fas fa-hand-holding-heart"></i> Donate or Join as a Donor</a>
+          <a href="/impact" class="btn btn-secondary btn-large"><i class="fas fa-chart-bar"></i> View Live Impact</a>
+          <span class="impact-cta-note">Pilot: payments run in test mode</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- DONOR DASHBOARD -->
+<section class="dashboard" id="userDashboard">
+  <div class="dash-shell">
+    <aside class="dash-sidebar">
+      <div class="dash-brand">
+        <div class="dash-logo"><i class="fas fa-hand-holding-heart"></i></div>
+        <div><div class="dash-brand-title">Empower Nyamagabe</div><div class="dash-brand-subtitle">Donor Portal</div></div>
+      </div>
+      <div class="dash-profile">
+        <div class="dash-avatar"><i class="fas fa-user"></i></div>
+        <div class="dash-profile-meta">
+          <div class="dash-profile-name" id="dashUserName">Donor</div>
+          <div class="dash-profile-chip"><i class="fas fa-heart"></i> Donor</div>
+        </div>
+      </div>
+      <nav class="dash-nav" aria-label="Donor dashboard navigation">
+        <button class="dash-nav-item active" type="button" data-tab-target="user-overview"><i class="fas fa-table-cells-large"></i><span>Overview</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="user-families"><i class="fas fa-people-roof"></i><span>Verified Families</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="user-donate"><i class="fas fa-heart"></i><span>Donate</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="user-history"><i class="fas fa-route"></i><span>My Donation Trace</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="user-impact"><i class="fas fa-chart-line"></i><span>Impact</span></button>
+      </nav>
+      <div class="dash-sidebar-footer">
+        <div class="dash-note"><div class="dash-note-title">Tip</div><div class="dash-note-text">Open "Verified Families", pick a family, and your donation is linked to that exact need.</div></div>
+        <button class="btn btn-secondary btn-full" id="backToSiteBtn" type="button"><i class="fas fa-arrow-left"></i> Back to Website</button>
+      </div>
+    </aside>
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <div><h2 class="dash-title">Your Dashboard</h2><p class="dash-subtitle">Support verified families in Nyamagabe and trace every donation.</p></div>
+        <div class="dash-top-actions"><button class="btn btn-primary" id="quickDonateBtn" type="button"><i class="fas fa-people-roof"></i> Choose a Family</button></div>
+      </div>
+      <div class="dash-content">
+        <div class="pilot-banner pilot-inline" data-pilot-banner hidden><i class="fas fa-flask"></i> <strong>Pilot:</strong> payments run in Flutterwave test mode, so no real money moves.</div>
+        <!-- Overview -->
+        <section class="dash-panel active" id="user-overview">
+          <div class="stat-grid">
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-coins"></i></div><div class="stat-meta"><div class="stat-label">Total donated</div><div class="stat-value" id="userTotalDonated">RWF 0</div></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-receipt"></i></div><div class="stat-meta"><div class="stat-label">Donations made</div><div class="stat-value" id="userDonationCount">0</div></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-people-group"></i></div><div class="stat-meta"><div class="stat-label">Families supported</div><div class="stat-value" id="userLivesImpacted">0</div></div></div>
+          </div>
+          <div class="panel-grid">
+            <div class="panel-card">
+              <div class="panel-header"><h3><i class="fas fa-people-roof"></i> Families needing support</h3><p>Verified by local leaders. Pick one to give.</p></div>
+              <div class="panel-body" id="overviewFamiliesMount"><p class="muted">Loading…</p></div>
+            </div>
+            <div class="panel-card">
+              <div class="panel-header"><h3><i class="fas fa-clock-rotate-left"></i> Recent activity</h3><p>Your latest donations.</p></div>
+              <div class="panel-body"><div id="donationHistory"><p>No donations yet.</p></div></div>
+            </div>
+          </div>
+        </section>
+        <!-- Verified families -->
+        <section class="dash-panel" id="user-families">
+          <div class="panel-card">
+            <div class="panel-header"><h3><i class="fas fa-people-roof"></i> Verified Families</h3><p>Each family was confirmed by local leaders. Only an anonymous code, sector and need are shown.</p></div>
+            <div class="panel-body">
+              <div class="family-filter" role="group" aria-label="Filter families by need">
+                <button type="button" class="chip-btn active" data-dash-family-filter="all">All needs</button>
+                <button type="button" class="chip-btn" data-dash-family-filter="education"><i class="fas fa-book-open"></i> School fees</button>
+                <button type="button" class="chip-btn" data-dash-family-filter="health"><i class="fas fa-shield-heart"></i> Mutuelle de Santé</button>
+              </div>
+              <div class="family-grid" id="dashFamilyGrid"><p class="muted">Loading…</p></div>
+            </div>
+          </div>
+        </section>
+        <!-- Donate -->
+        <section class="dash-panel" id="user-donate">
+          <div class="panel-card">
+            <div class="panel-header"><h3><i class="fas fa-heart"></i> Make a Donation</h3><p>Your gift is recorded against one family and one need.</p></div>
+            <div class="panel-body">
+              <form id="donationForm" class="form-modern">
+                <input type="hidden" id="donationFamilyId" value="">
+                <div id="selectedFamilyBox" class="selected-family empty">
+                  <i class="fas fa-people-roof"></i>
+                  <div><strong>No family selected</strong><div class="muted">Go to <a href="#" id="goToFamiliesLink" class="auth-link">Verified Families</a> and choose who you want to support.</div></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Amount (RWF)</label>
+                    <div class="donation-amount">
+                      <button type="button" class="amount-btn" data-amount="5000">5,000</button>
+                      <button type="button" class="amount-btn" data-amount="10000">10,000</button>
+                      <button type="button" class="amount-btn" data-amount="25000">25,000</button>
+                      <button type="button" class="amount-btn" data-amount="50000">50,000</button>
+                    </div>
+                    <input type="number" id="donationAmount" placeholder="Or enter custom amount" min="1000" required>
+                    <span class="helper-text" id="amountHelper">Minimum 1,000 RWF.</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Payment Method</label>
+                    <select id="paymentMethod" required>
+                      <option value="">Select Payment Method</option>
+                      <option value="mobile_money">📱 Mobile Money (MoMo)</option>
+                      <option value="credit_card">💳 Credit / Debit Card</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Note <span class="muted">(optional)</span></label>
+                    <input type="text" id="donationNote" maxlength="280" placeholder="A short message for your own records">
+                  </div>
+                  <div class="form-group"><label class="checkline"><input type="checkbox" id="donationAnonymous" /> Donate anonymously <span class="muted">(your name won't appear publicly)</span></label></div>
+                </div>
+                <div id="momoDetails" class="payment-details hidden">
+                  <div class="form-group" style="margin-bottom:0;"><label>📱 Mobile Money Phone Number</label><input type="tel" id="momoPhone" placeholder="+250 7XX XXX XXX"><span class="helper-text">Used only to pre-fill Flutterwave's page. You approve the payment on your phone.</span></div>
+                </div>
+                <div id="cardDetails" class="payment-details hidden">
+                  <div class="callout"><i class="fas fa-lock"></i><div><strong>Secure checkout</strong><div class="muted">Card details are entered on Flutterwave's page. This site never sees them.</div></div></div>
+                </div>
+                <button type="submit" class="btn btn-forest btn-full" id="donateButton" style="margin-top:1rem;"><i class="fas fa-hand-holding-heart"></i><span id="donateButtonText">Donate Now</span></button>
+                <div id="paymentStatus" class="hidden"></div>
+              </form>
+            </div>
+          </div>
+        </section>
+        <!-- Trace / History -->
+        <section class="dash-panel" id="user-history">
+          <div class="panel-card">
+            <div class="panel-header"><h3><i class="fas fa-route"></i> My Donation Trace</h3><p>Every donation, with the family code, need and payment reference it paid for.</p></div>
+            <div class="panel-body"><div id="donationHistoryCloneMount"></div></div>
+          </div>
+        </section>
+        <!-- Impact -->
+        <section class="dash-panel" id="user-impact">
+          <div class="panel-card">
+            <div class="panel-header"><h3><i class="fas fa-chart-pie"></i> Your Impact</h3><p>Summary of the support you have given.</p></div>
+            <div class="panel-body"><div id="impactSummary"><div class="empty-state"><i class="fas fa-chart-line"></i><p>Your impact summary will appear here after your first completed donation.</p></div></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCAL LEADER DASHBOARD -->
+<section class="dashboard" id="leaderDashboard">
+  <div class="dash-shell">
+    <aside class="dash-sidebar">
+      <div class="dash-brand">
+        <div class="dash-logo"><i class="fas fa-people-roof"></i></div>
+        <div><div class="dash-brand-title">Empower Nyamagabe</div><div class="dash-brand-subtitle">Local Leader Portal</div></div>
+      </div>
+      <div class="dash-profile">
+        <div class="dash-avatar"><i class="fas fa-user-tie"></i></div>
+        <div class="dash-profile-meta">
+          <div class="dash-profile-name" id="leaderUserName">Local Leader</div>
+          <div class="dash-profile-chip"><i class="fas fa-location-dot"></i> <span id="leaderSectorChip">Sector</span></div>
+        </div>
+      </div>
+      <nav class="dash-nav" aria-label="Leader dashboard navigation">
+        <button class="dash-nav-item active" type="button" data-tab-target="leader-queue"><i class="fas fa-clipboard-check"></i><span>Verification Queue</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="leader-guide"><i class="fas fa-circle-info"></i><span>Verification Guide</span></button>
+      </nav>
+      <div class="dash-sidebar-footer">
+        <div class="dash-note"><div class="dash-note-title">Reminder</div><div class="dash-note-text">You cannot approve a family you submitted yourself. Another leader or the admin must.</div></div>
+        <button class="btn btn-secondary btn-full" id="backToSiteBtnLeader" type="button"><i class="fas fa-arrow-left"></i> Back to Website</button>
+      </div>
+    </aside>
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <div><h2 class="dash-title">Verification Queue</h2><p class="dash-subtitle">Submit households in your sector and confirm the need of those submitted.</p></div>
+        <div class="dash-top-actions"><button class="btn btn-primary" id="submitFamilyBtnLeader" type="button"><i class="fas fa-user-plus"></i> Submit a Family</button></div>
+      </div>
+      <div class="dash-content">
+        <section class="dash-panel active" id="leader-queue">
+          <div class="stat-grid">
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-hourglass-half"></i></div><div class="stat-meta"><div class="stat-label">Awaiting decision</div><div class="stat-value" id="leaderPendingCount">0</div></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-circle-check"></i></div><div class="stat-meta"><div class="stat-label">Verified</div><div class="stat-value" id="leaderApprovedCount">0</div></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-circle-xmark"></i></div><div class="stat-meta"><div class="stat-label">Rejected</div><div class="stat-value" id="leaderRejectedCount">0</div></div></div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-header"><h3><i class="fas fa-clipboard-list"></i> Families in your sector</h3><p>Pending families are listed first. Select "Review" to see the private details and decide.</p></div>
+            <div class="panel-body"><div class="table-wrap"><table class="data-table"><thead><tr><th>Code</th><th>Ubudehe</th><th>Need</th><th>Submitted by</th><th>Status</th><th></th></tr></thead><tbody id="leaderFamiliesList"><tr><td colspan="6" class="table-empty">Loading…</td></tr></tbody></table></div></div>
+          </div>
+        </section>
+        <section class="dash-panel" id="leader-guide">
+          <div class="panel-card">
+            <div class="panel-header"><h3><i class="fas fa-circle-info"></i> Verification guide</h3><p>How decisions are made on this platform.</p></div>
+            <div class="panel-body guide-body">
+              <p>Empower Nyamagabe builds on the Ubudehe classification and your knowledge of households in your village. The platform adds a record of who submitted and who decided, so that decisions can be reviewed.</p>
+              <ul>
+                <li><strong>Check the household</strong> is in a lower Ubudehe category and has a real school-fee or Mutuelle de Santé need.</li>
+                <li><strong>Write the public description without identifying details.</strong> Do not include names, phone numbers or the village. Donors see this text.</li>
+                <li><strong>Give a reason when rejecting.</strong> It is stored in the audit trail.</li>
+                <li><strong>Participation is voluntary.</strong> Taking part in the pilot never changes whether a family is chosen to receive help.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN DASHBOARD -->
+<section class="dashboard" id="adminDashboard">
+  <div class="dash-shell">
+    <aside class="dash-sidebar">
+      <div class="dash-brand">
+        <div class="dash-logo"><i class="fas fa-shield-halved"></i></div>
+        <div><div class="dash-brand-title">Empower Nyamagabe</div><div class="dash-brand-subtitle">Admin Console</div></div>
+      </div>
+      <div class="dash-profile">
+        <div class="dash-avatar admin"><i class="fas fa-user-gear"></i></div>
+        <div class="dash-profile-meta"><div class="dash-profile-name">Administrator</div><div class="dash-profile-chip"><i class="fas fa-lock"></i> Admin Access</div></div>
+      </div>
+      <nav class="dash-nav" aria-label="Admin dashboard navigation">
+        <button class="dash-nav-item active" type="button" data-tab-target="admin-overview"><i class="fas fa-table-cells-large"></i><span>Overview</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="admin-families"><i class="fas fa-clipboard-check"></i><span>Families &amp; Verification</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="admin-donations"><i class="fas fa-money-check-dollar"></i><span>Donations</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="admin-leaders"><i class="fas fa-user-tie"></i><span>Local Leaders</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="admin-reports"><i class="fas fa-chart-pie"></i><span>Reports</span></button>
+        <button class="dash-nav-item" type="button" data-tab-target="admin-audit"><i class="fas fa-list-check"></i><span>Audit Log</span></button>
+      </nav>
+      <div class="dash-sidebar-footer">
+        <div class="dash-note"><div class="dash-note-title">Reminder</div><div class="dash-note-text">No final decision about a family is made without local leaders' input.</div></div>
+        <button class="btn btn-secondary btn-full" id="backToSiteBtnAdmin" type="button"><i class="fas fa-arrow-left"></i> Back to Website</button>
+      </div>
+    </aside>
+    <div class="dash-main">
+      <div class="dash-topbar">
+        <div><h2 class="dash-title">Admin Dashboard</h2><p class="dash-subtitle">Oversee verification, donations and reports.</p></div>
+        <div class="dash-top-actions"><button class="btn btn-primary" id="submitFamilyBtnAdmin" type="button"><i class="fas fa-user-plus"></i> Submit a Family</button></div>
+      </div>
+      <div class="dash-content">
+        <div class="pilot-banner pilot-inline" data-pilot-banner hidden><i class="fas fa-flask"></i> <strong>Pilot:</strong> payments run in Flutterwave test mode, so no real money moves.</div>
+        <section class="dash-panel active" id="admin-overview">
+          <div class="stat-grid">
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-hand-holding-dollar"></i></div><div class="stat-meta"><div class="stat-label">Total donated (completed)</div><div class="stat-value" id="adminTotalDonated">RWF 0</div></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-people-roof"></i></div><div class="stat-meta"><div class="stat-label">Verified families</div><div class="stat-value" id="adminVerifiedCount">0</div></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-hourglass-half"></i></div><div class="stat-meta"><div class="stat-label">Awaiting verification</div><div class="stat-value" id="adminPendingCount">0</div></div></div>
+          </div>
+          <div class="panel-grid">
+            <div class="panel-card">
+              <div class="panel-header"><h3><i class="fas fa-users"></i> Recent Donations</h3><p>Latest donations with their family code.</p></div>
+              <div class="panel-body"><div class="table-wrap"><table class="data-table"><thead><tr><th>Donor</th><th>Family</th><th>Amount</th><th>Need</th><th>Date</th><th>Status</th></tr></thead><tbody id="adminDonationsList"><tr><td colspan="6" class="table-empty">Loading…</td></tr></tbody></table></div></div>
+            </div>
+            <div class="panel-card">
+              <div class="panel-header"><h3><i class="fas fa-hourglass-half"></i> Awaiting verification</h3><p>Families submitted and not yet decided.</p></div>
+              <div class="panel-body"><div class="table-wrap"><table class="data-table"><thead><tr><th>Code</th><th>Sector</th><th>Need</th><th></th></tr></thead><tbody id="adminPendingList"><tr><td colspan="4" class="table-empty">Loading…</td></tr></tbody></table></div></div>
+            </div>
+          </div>
+        </section>
+        <section class="dash-panel" id="admin-families">
+          <div class="panel-card">
+            <div class="panel-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+              <div><h3><i class="fas fa-clipboard-check"></i> Families &amp; Verification</h3><p>All sectors. Review, approve or reject submitted families.</p></div>
+              <div style="display:flex;gap:.5rem"><button type="button" class="btn btn-outline" id="exportFamiliesBtn"><i class="fas fa-file-csv"></i> CSV</button><button type="button" class="btn btn-outline" id="exportFamiliesXlsxBtn"><i class="fas fa-file-excel"></i> Excel</button></div>
+            </div>
+            <div class="panel-body"><div class="table-wrap"><table class="data-table"><thead><tr><th>Code</th><th>Sector</th><th>Ubudehe</th><th>Need</th><th>Funded</th><th>Status</th><th></th></tr></thead><tbody id="adminFamiliesList"><tr><td colspan="7" class="table-empty">Loading…</td></tr></tbody></table></div></div>
+          </div>
+        </section>
+        <section class="dash-panel" id="admin-donations">
+          <div class="panel-card">
+            <div class="panel-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+              <div><h3><i class="fas fa-money-check-dollar"></i> Donations</h3><p>Every donation, traced to a family and need.</p></div>
+              <div style="display:flex;gap:.5rem"><button type="button" class="btn btn-outline" id="exportDonationsBtn"><i class="fas fa-file-csv"></i> CSV</button><button type="button" class="btn btn-outline" id="exportDonationsXlsxBtn"><i class="fas fa-file-excel"></i> Excel</button></div>
+            </div>
+            <div class="panel-body"><div class="table-wrap"><table class="data-table"><thead><tr><th>Donor</th><th>Family</th><th>Amount</th><th>Need</th><th>Date</th><th>Status</th></tr></thead><tbody id="adminDonationsListCloneMount"></tbody></table></div></div>
+          </div>
+        </section>
+        <section class="dash-panel" id="admin-leaders">
+          <div class="panel-card">
+            <div class="panel-header"><h3><i class="fas fa-user-tie"></i> Local Leaders</h3><p>Create accounts for Umudugudu and Ubudehe committee members. Leaders can only work in their own sector.</p></div>
+            <div class="panel-body">
+              <form id="leaderForm" class="form-modern">
+                <div class="form-row">
+                  <div class="form-group"><label>Full name</label><input type="text" id="leaderName" required></div>
+                  <div class="form-group"><label>Sector</label><input type="text" id="leaderSector" required placeholder="Pilot sector"></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label>Phone</label><input type="tel" id="leaderPhone" placeholder="07XX XXX XXX"></div>
+                  <div class="form-group"><label>Email <span class="muted">(optional if phone given)</span></label><input type="email" id="leaderEmail"></div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label>Temporary password</label><input type="password" id="leaderPassword" minlength="6" required></div>
+                  <div class="form-group" style="align-self:end;"><button type="submit" class="btn btn-forest btn-full"><i class="fas fa-user-plus"></i> Create leader account</button></div>
+                </div>
+              </form>
+              <div class="table-wrap" style="margin-top:1.25rem;"><table class="data-table"><thead><tr><th>Name</th><th>Sector</th><th>Contact</th><th>Submitted</th><th>Decided</th></tr></thead><tbody id="leadersList"><tr><td colspan="5" class="table-empty">Loading…</td></tr></tbody></table></div>
+            </div>
+          </div>
+        </section>
+        <section class="dash-panel" id="admin-reports">
+          <div class="panel-card">
+            <div class="panel-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+              <div><h3><i class="fas fa-chart-pie"></i> Reports</h3><p>Summary of donations and verified families.</p></div>
+              <button type="button" class="btn btn-outline" id="refreshReportBtn"><i class="fas fa-rotate"></i> Refresh</button>
+            </div>
+            <div class="panel-body" id="reportMount"><p class="muted">Loading…</p></div>
+          </div>
+        </section>
+        <section class="dash-panel" id="admin-audit">
+          <div class="panel-card">
+            <div class="panel-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+              <div><h3><i class="fas fa-list-check"></i> Audit Log</h3><p>Verification decisions, accounts and donations (last 200).</p></div>
+              <button type="button" class="btn btn-outline" id="refreshAuditBtn"><i class="fas fa-rotate"></i> Refresh</button>
+            </div>
+            <div class="panel-body"><div class="table-wrap"><table class="data-table"><thead><tr><th>Time</th><th>Actor</th><th>Action</th><th>Entity</th><th>Details</th></tr></thead><tbody id="auditLogsList"><tr><td colspan="5" class="table-empty">Loading…</td></tr></tbody></table></div></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="/"><i class="fas fa-hands-helping"></i>Empower Nyamagabe</a>
+        <p>A transparent donation platform for school fees and Mutuelle de Santé, supporting community-verified families in Nyamagabe District.</p>
+        <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> Nyamagabe District, Southern Province, Rwanda</div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i> rurangwamika98@gmail.com</div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i> +250 786 130 393</div>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="#about">About</a>
+        <a href="#how">How It Works</a>
+        <a href="#families">Verified Families</a>
+        <a href="#impact">Accountability</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <a href="#" id="footerDonateBtn">Make a Donation</a>
+        <a href="mailto:rurangwamika98@gmail.com?subject=Empower%20Nyamagabe%20-%20Local%20leader%20partnership">Partner as a Local Leader</a>
+        <a href="/impact">View Live Impact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:rurangwamika98@gmail.com">Email us</a>
+        <a href="tel:+250786130393">+250 786 130 393</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Empower Nyamagabe. A Mission Capstone pilot project.</span>
+      <span><a href="/privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- SUBMIT FAMILY MODAL -->
+<div class="modal" id="familyModal" role="dialog" aria-modal="true" aria-labelledby="familyModalTitle">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="familyModalTitle">Submit a Family for Verification</h2>
+      <button class="close" id="closeFamilyModal" aria-label="Close" type="button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="muted" style="margin-top:0;">The name, phone and village below stay private. Only the code, sector, Ubudehe category and the public description are shown to donors.</p>
+      <form id="familyForm">
+        <div class="modal-grid">
+          <div class="form-group"><label>Head of household (private)</label><input type="text" id="familyHeadName" required maxlength="120"></div>
+          <div class="form-group"><label>Phone (private, optional)</label><input type="tel" id="familyPhone" placeholder="07XX XXX XXX"></div>
+          <div class="form-group" id="familySectorGroup"><label>Sector</label><input type="text" id="familySector" maxlength="80"></div>
+          <div class="form-group"><label>Cell (private)</label><input type="text" id="familyCell" maxlength="80"></div>
+          <div class="form-group"><label>Village / Umudugudu (private)</label><input type="text" id="familyVillage" maxlength="80"></div>
+          <div class="form-group"><label>Ubudehe category</label>
+            <select id="familyUbudehe" required>
+              <option value="">Select category</option>
+              <option value="1">Category 1</option>
+              <option value="2">Category 2</option>
+              <option value="3">Category 3</option>
+              <option value="4">Category 4</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Household size <span class="muted">(optional)</span></label><input type="number" id="familyHousehold" min="1" max="30"></div>
+          <div class="form-group"><label>Need</label>
+            <select id="familyNeedType" required>
+              <option value="">Select need</option>
+              <option value="education">School fees</option>
+              <option value="health">Health insurance (Mutuelle de Santé)</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Amount needed (RWF)</label><input type="number" id="familyNeedAmount" min="1000" max="5000000" required></div>
+          <div class="form-group" style="grid-column:1/-1;"><label>Public description of the need</label><textarea id="familyNeedDescription" rows="2" maxlength="400" required placeholder="e.g., Term 2 school fees for two children in lower secondary. Do not include names, phone numbers or the village."></textarea></div>
+          <div class="form-group" style="grid-column:1/-1;"><label>Supporting notes (private, for the verifier)</label><textarea id="familyNotes" rows="3" maxlength="1000" required placeholder="How you know the household and why the need is genuine"></textarea></div>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-forest btn-full"><i class="fas fa-paper-plane"></i> Submit for verification</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- VERIFY FAMILY MODAL -->
+<div class="modal" id="verifyModal" role="dialog" aria-modal="true" aria-labelledby="verifyModalTitle">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="verifyModalTitle">Review Family</h2>
+      <button class="close" id="closeVerifyModal" aria-label="Close" type="button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="verifyDetails" class="verify-details"></div>
+      <div id="verifyActions">
+        <div class="form-group"><label>Decision notes <span class="muted">(required when rejecting)</span></label><textarea id="verifyNotes" rows="3" maxlength="500"></textarea></div>
+        <div class="modal-actions" style="display:flex;gap:.75rem;">
+          <button type="button" class="btn btn-forest btn-full" id="approveFamilyBtn"><i class="fas fa-circle-check"></i> Approve</button>
+          <button type="button" class="btn btn-outline btn-full" id="rejectFamilyBtn"><i class="fas fa-circle-xmark"></i> Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js" defer></script>
+</body>
+</html>
