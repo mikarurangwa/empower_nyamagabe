@@ -1,4 +1,4 @@
-# Empower Nyamagabe – Backend
+# Empower Nyamagabe - Backend
 
 The REST API behind Empower Nyamagabe. It handles accounts, family verification, Flutterwave payments, receipts and admin reports. It also serves the frontend, so one `npm start` runs the whole site.
 
@@ -143,4 +143,4 @@ The app runs as one Node service. On a host like Render:
 2. Attach a persistent disk and point `DB_PATH` at it, for example `/var/data/empower_nyamagabe.db`. Without one, SQLite data is lost on every deploy.
 3. Set the environment variables above, with `NODE_ENV=production` and `APP_BASE_URL` set to the live URL.
 4. Use `/api/public/health` as the health check.
-5. In Flutterwave, set the webhook to `<your-url>/api/payments/flutterwave/webhook` if you use one.
+5. In Flutterwave, set the webhook to `<url>/api/payments/flutterwave/webhook`
