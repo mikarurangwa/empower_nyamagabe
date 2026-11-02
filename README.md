@@ -8,7 +8,7 @@ Mission Capstone (BSE), by Rurangwa Mika.
 
 | | |
 | --- | --- |
-| Walkthrough video | _add link_ |
+| Walkthrough video |  |
 | Technical report (PDF) | [Technical_Report.pdf](Technical_Report.pdf) |
 | Repository | https://github.com/mikarurangwa/empower_nyamagabe |
 
