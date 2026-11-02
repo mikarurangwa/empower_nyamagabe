@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt | Empower Nyamagabe</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d5a3a'/%3E%3Ccircle cx='21' cy='11' r='5' fill='%23f4c534'/%3E%3Cpath d='M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z' fill='%23f3f6f1'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#256b45"/><circle cx="21" cy="11" r="5" fill="#f4c534"/><path d="M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z" fill="#f3f6f1"/></svg>Empower Nyamagabe</a>
+      <ul class="nav">
+        <li><a href="/#families">Families</a></li>
+        <li><a href="/impact">Impact</a></li>
+      </ul>
+      <div class="header-actions" style="display:flex;"><a href="/" class="btn btn-ghost btn-sm">Back to home</a></div>
+    </div>
+  </header>
+  <main class="page">
+    <div class="container">
+      <div class="page-head no-print">
+        <a href="/?open=dashboard" class="btn-link"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left"></use></svg> Back to my dashboard</a>
+      </div>
+      <div class="card" style="max-width:820px">
+        <div class="card-head">
+          <div><h2>Donation receipt</h2><p>Keep this for your records.</p></div>
+          <div class="btn-row no-print">
+            <button type="button" class="btn btn-outline btn-sm" id="printReceipt"><svg class="icon" aria-hidden="true"><use href="/icons.svg#print"></use></svg> Print</button>
+            <button type="button" class="btn btn-primary btn-sm" id="downloadReceipt"><svg class="icon" aria-hidden="true"><use href="/icons.svg#file-pdf"></use></svg> Download PDF</button>
+          </div>
+        </div>
+        <div class="alert" id="pageAlert" role="alert" hidden></div>
+        <div id="receiptBody"></div>
+        <p class="muted" style="margin-top:1.5rem">Payments are handled by Flutterwave. We don't store Mobile Money PINs or card numbers. Only the family code is shown to protect the family's privacy.</p>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#256b45"/><circle cx="21" cy="11" r="5" fill="#f4c534"/><path d="M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z" fill="#f3f6f1"/></svg>Empower Nyamagabe</a>
+        <p>School fees and Mutuelle de Santé for families in Nyamagabe District, checked by their local leaders.</p>
+        <p>Nyamagabe District, Southern Province, Rwanda</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <a href="/#about">About</a>
+        <a href="/#how">How it works</a>
+        <a href="/#families">Families</a>
+        <a href="/impact">Impact</a>
+      </div>
+      <div>
+        <h4>Get involved</h4>
+        <a href="/signup">Create an account</a>
+        <a href="mailto:rurangwamika98@gmail.com?subject=Local%20leader%20partnership">Work with us as a local leader</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:rurangwamika98@gmail.com">rurangwamika98@gmail.com</a>
+        <a href="tel:+250786130393">+250 786 130 393</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Empower Nyamagabe</span>
+      <span><a href="/privacy">Privacy policy</a><a href="/terms">Terms of service</a></span>
+    </div>
+  </div>
+</footer>
+  <script src="/js/common.js"></script>
+  <script src="/js/receipt.js"></script>
+</body>
+</html>

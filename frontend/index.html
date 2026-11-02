@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Support families in Nyamagabe District, Rwanda, with school fees and Mutuelle de Santé. Every family is checked by local leaders and every donation is recorded.">
+  <title>Empower Nyamagabe | School fees and health cover for families in Nyamagabe</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d5a3a'/%3E%3Ccircle cx='21' cy='11' r='5' fill='%23f4c534'/%3E%3Cpath d='M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z' fill='%23f3f6f1'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#256b45"/><circle cx="21" cy="11" r="5" fill="#f4c534"/><path d="M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z" fill="#f3f6f1"/></svg>Empower Nyamagabe</a>
+    <ul class="nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#families">Families</a></li>
+      <li><a href="#why">Why it matters</a></li>
+      <li><a href="/impact">Impact</a></li>
+    </ul>
+    <div class="header-actions" data-guest>
+      <a href="/login" class="btn btn-ghost btn-sm">Log in</a>
+      <a href="/signup" class="btn btn-sun btn-sm">Sign up</a>
+    </div>
+    <div class="header-actions hidden" data-member>
+      <button type="button" class="btn btn-sun btn-sm" data-action="dashboard">Dashboard</button>
+      <button type="button" class="btn btn-ghost btn-sm" data-action="logout">Log out</button>
+    </div>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="/icons.svg#bars"></use></svg></button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+    <a href="#about">About</a>
+    <a href="#how">How it works</a>
+    <a href="#families">Families</a>
+    <a href="#why">Why it matters</a>
+    <a href="/impact">Impact</a>
+    <div class="header-actions" data-guest>
+      <a href="/login" class="btn btn-ghost">Log in</a>
+      <a href="/signup" class="btn btn-sun">Sign up</a>
+    </div>
+    <div class="header-actions hidden" data-member>
+      <button type="button" class="btn btn-sun" data-action="dashboard">Dashboard</button>
+      <button type="button" class="btn btn-ghost" data-action="logout">Log out</button>
+    </div>
+  </nav>
+</header>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<main id="mainContent">
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-place"><svg class="icon" aria-hidden="true"><use href="/icons.svg#location-dot"></use></svg> Nyamagabe District, Southern Province</div>
+      <h1>Keep a child in school. Keep a family insured.</h1>
+      <p>Local leaders identify households in Nyamagabe that can't cover school fees or Mutuelle de Santé. You choose a family, pay with Mobile Money or card, and see exactly where your money went.</p>
+      <div class="hero-actions">
+        <a href="#families" class="btn btn-sun btn-lg">See the families</a>
+        <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
+      </div>
+    </div>
+    <svg class="hills" viewBox="0 0 1440 240" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+      <circle cx="1150" cy="72" r="46" fill="#f4c534"/>
+      <path d="M0,125 C140,75 300,65 460,100 C600,130 720,75 880,63 C1040,51 1180,105 1300,97 C1370,93 1410,85 1440,81 V240 H0Z" fill="#2a7049"/>
+      <path d="M0,175 C200,115 420,110 600,145 C760,175 900,125 1080,117 C1240,110 1360,145 1440,135 V240 H0Z" fill="#3d8c5c"/>
+      <g fill="none" stroke="#2f7a4d" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 14"><path d="M0,189 C200,129 420,124 600,159 C760,189 900,139 1080,131 C1240,124 1360,159 1440,149"/><path d="M0,203 C200,143 420,138 600,173 C760,203 900,153 1080,145 C1240,138 1360,173 1440,163"/><path d="M0,217 C200,157 420,152 600,187 C760,217 900,167 1080,159 C1240,152 1360,187 1440,177"/><path d="M0,231 C200,171 420,166 600,201 C760,231 900,181 1080,173 C1240,166 1360,201 1440,191"/></g>
+      <path d="M0,212 C240,182 520,196 760,204 C1000,212 1240,186 1440,198 V240 H0Z" fill="#f3f6f1"/>
+    </svg>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <h2>Giving you can follow from start to finish</h2>
+        <p>Empower Nyamagabe helps families in Nyamagabe District with two costs that decide a lot: school fees, and Mutuelle de Santé, the community health insurance that covers a household when someone falls ill. When a family can't afford both, children are often the ones who leave school.</p>
+        <p>Families are put forward by Umudugudu and Ubudehe leaders who know them. Every donation is recorded against one family and one need.</p>
+        <ul class="promises">
+          <li><span class="tick"><svg class="icon" aria-hidden="true"><use href="/icons.svg#check"></use></svg></span><span>Every family is approved by a local leader before you can see it.</span></li>
+          <li><span class="tick"><svg class="icon" aria-hidden="true"><use href="/icons.svg#check"></use></svg></span><span>Names, phone numbers and villages are never shown to donors.</span></li>
+          <li><span class="tick"><svg class="icon" aria-hidden="true"><use href="/icons.svg#check"></use></svg></span><span>No bank account needed. Mobile Money works.</span></li>
+        </ul>
+      </div>
+      <aside class="pays-card">
+        <h3>What your donation pays for</h3>
+        <div class="pays-item"><strong>School fees</strong><span>Term fees for children in primary and secondary school.</span></div>
+        <div class="pays-item"><strong>Mutuelle de Santé</strong><span>The yearly health insurance contribution for a household.</span></div>
+        <div class="pays-item"><strong>Nothing else</strong><span>Your money goes to the need you chose, and your history shows which family received it.</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-white" id="how">
+    <div class="container">
+      <div class="section-head">
+        <h2>How a family gets support</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3>A leader puts a family forward</h3>
+          <p>An Umudugudu or Ubudehe committee member records the household's Ubudehe category, what it needs and why.</p>
+        </li>
+        <li class="step">
+          <h3>A second person checks it</h3>
+          <p>Another leader or the administrator approves or rejects it. Only approved families are shown.</p>
+        </li>
+        <li class="step">
+          <h3>You donate</h3>
+          <p>Pay with Mobile Money or card on Flutterwave's checkout page. We never see your payment details.</p>
+        </li>
+        <li class="step">
+          <h3>You see where it went</h3>
+          <p>Your history shows the family code, the need and the payment reference for every donation.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="families">
+    <div class="container">
+      <div class="families-head">
+        <div class="section-head">
+          <h2>Families waiting for support</h2>
+          <p class="lead">Each family has been checked by local leaders. To protect their privacy we show a family code, the sector and the need.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter by need" data-filter-group="landing">
+          <button type="button" class="filter-btn active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="education">School fees</button>
+          <button type="button" class="filter-btn" data-filter="health">Mutuelle de Santé</button>
+        </div>
+      </div>
+      <div class="family-grid" id="landingFamilies"><p class="muted">Loading families…</p></div>
+    </div>
+  </section>
+
+  <section class="section section-white" id="why">
+    <div class="container why-grid">
+      <div class="why-copy">
+        <h2>Why Nyamagabe</h2>
+        <p>Just over half of Nyamagabe's people (51.4%) live below the poverty line, almost twice the national rate of 27.4%. For many households that means children leaving school and families falling behind on health insurance.</p>
+        <p>When a family can't pay for both, one of them goes unpaid. Studies in Rwanda link health insurance with lower school dropout.</p>
+        <ul class="facts">
+          <li><strong>Children leave school</strong><span>Dropout is 7% in primary, 11% in lower secondary and 6% in upper secondary. Primary repetition is 32%, against 21% nationally.</span></li>
+          <li><strong>Some families are still uninsured</strong><span>Coverage rose from 75.2% in 2017 to 96.1% in 2024. The remaining 3.9% is about 14,500 people.</span></li>
+          <li><strong>Cash gifts leave no trace</strong><span>International platforms usually need a bank card, and cash leaves no record of where the money went.</span></li>
+        </ul>
+        <p class="source">Sources: NISR EICV7 Poverty Profile (2024); Nyamagabe District Development Strategy 2024&ndash;2029.</p>
+      </div>
+      <div class="numbers">
+        <div class="number"><b>51.4%</b><span>of people live below the poverty line</span></div>
+        <div class="number"><b>11%</b><span>dropout in lower secondary school</span></div>
+        <div class="number"><b>14,500</b><span>people without health insurance</span></div>
+        <div class="number"><b>32%</b><span>of primary pupils repeat a year</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trust">
+    <div class="container">
+      <div class="section-head">
+        <h2>How we keep it honest</h2>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <svg class="icon" aria-hidden="true"><use href="/icons.svg#people-roof"></use></svg>
+          <div><h3>Checked by the community</h3><p>Families are assessed with Rwanda's Ubudehe categories. A rejection needs a written reason, and every decision is logged.</p></div>
+        </div>
+        <div class="trust-item">
+          <svg class="icon" aria-hidden="true"><use href="/icons.svg#receipt"></use></svg>
+          <div><h3>Every donation recorded</h3><p>Each donation is tied to one family and one need, with its Flutterwave reference and a receipt you can download.</p></div>
+        </div>
+        <div class="trust-item">
+          <svg class="icon" aria-hidden="true"><use href="/icons.svg#lock"></use></svg>
+          <div><h3>Payment details stay with Flutterwave</h3><p>Mobile Money numbers, PINs and card numbers are entered only on Flutterwave's page, never on ours.</p></div>
+        </div>
+        <div class="trust-item">
+          <svg class="icon" aria-hidden="true"><use href="/icons.svg#user-shield"></use></svg>
+          <div><h3>Families keep their privacy</h3><p>Donors never see a family's name, phone number or village. Only the need and the sector.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2>Pick a family and cover one need.</h2>
+      <p>Start from 100 RWF. You'll get a receipt as soon as Flutterwave confirms the payment.</p>
+      <div class="cta-actions">
+        <button type="button" class="btn btn-sun btn-lg" data-action="dashboard">Make a donation</button>
+        <a href="/impact" class="btn btn-ghost btn-lg">See our impact</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#256b45"/><circle cx="21" cy="11" r="5" fill="#f4c534"/><path d="M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z" fill="#f3f6f1"/></svg>Empower Nyamagabe</a>
+        <p>School fees and Mutuelle de Santé for families in Nyamagabe District, checked by their local leaders.</p>
+        <p>Nyamagabe District, Southern Province, Rwanda</p>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <a href="/#about">About</a>
+        <a href="/#how">How it works</a>
+        <a href="/#families">Families</a>
+        <a href="/impact">Impact</a>
+      </div>
+      <div>
+        <h4>Get involved</h4>
+        <a href="/signup">Create an account</a>
+        <a href="mailto:rurangwamika98@gmail.com?subject=Local%20leader%20partnership">Work with us as a local leader</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:rurangwamika98@gmail.com">rurangwamika98@gmail.com</a>
+        <a href="tel:+250786130393">+250 786 130 393</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Empower Nyamagabe</span>
+      <span><a href="/privacy">Privacy policy</a><a href="/terms">Terms of service</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Donor dashboard -->
+<section class="dash" id="donorDash">
+  <aside class="dash-side">
+    <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#256b45"/><circle cx="21" cy="11" r="5" fill="#f4c534"/><path d="M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z" fill="#f3f6f1"/></svg>Empower Nyamagabe</a>
+    <div class="dash-user"><strong data-user-name>Donor</strong><span>Donor account</span></div>
+    <nav class="dash-nav" aria-label="Donor menu">
+      <button type="button" class="active" data-view="donor-overview"><svg class="icon" aria-hidden="true"><use href="/icons.svg#house"></use></svg>Overview</button>
+      <button type="button" data-view="donor-families"><svg class="icon" aria-hidden="true"><use href="/icons.svg#people-roof"></use></svg>Families</button>
+      <button type="button" data-view="donor-give"><svg class="icon" aria-hidden="true"><use href="/icons.svg#hand-holding-heart"></use></svg>Donate</button>
+      <button type="button" data-view="donor-history"><svg class="icon" aria-hidden="true"><use href="/icons.svg#clock-rotate-left"></use></svg>My donations</button>
+    </nav>
+    <p class="dash-tip">Choose a family under Families. Your donation goes to that family's need.</p>
+    <button type="button" class="btn btn-ghost btn-block" data-action="home"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left"></use></svg> Back to website</button>
+  </aside>
+  <div class="dash-main">
+    <div class="dash-top">
+      <div><h1>Hello, <span data-user-name>there</span></h1><p>Choose a family, donate, and follow where your money went.</p></div>
+      <button type="button" class="btn btn-primary" data-view="donor-families">Choose a family</button>
+    </div>
+
+    <div class="panel-view active" id="donor-overview">
+      <div class="stats">
+        <div class="stat"><span>Total donated</span><b id="donorTotal">RWF 0</b></div>
+        <div class="stat"><span>Donations</span><b id="donorCount">0</b></div>
+        <div class="stat"><span>Families supported</span><b id="donorFamilies">0</b></div>
+      </div>
+      <div class="columns">
+        <div class="card">
+          <div class="card-head"><div><h2>Families who still need help</h2></div></div>
+          <div id="overviewFamilies"><p class="muted">Loading…</p></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><h2>Recent donations</h2></div></div>
+          <div id="recentDonations"><p class="muted">Loading…</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-view" id="donor-families">
+      <div class="filters" role="group" aria-label="Filter by need" data-filter-group="dash">
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="education">School fees</button>
+        <button type="button" class="filter-btn" data-filter="health">Mutuelle de Santé</button>
+      </div>
+      <div class="family-grid" id="dashFamilies"></div>
+    </div>
+
+    <div class="panel-view" id="donor-give">
+      <div class="card" style="max-width:760px">
+        <div class="card-head"><div><h2>Make a donation</h2><p>Your donation goes to one family and one need.</p></div></div>
+        <form id="donationForm" novalidate>
+          <input type="hidden" id="donationFamilyId">
+          <div class="chosen none" id="chosenFamily">
+            <svg class="icon" aria-hidden="true"><use href="/icons.svg#circle-info"></use></svg>
+            <div><strong>No family chosen yet</strong><div class="muted">Go to <button type="button" class="btn-link" data-view="donor-families">Families</button> and pick who to support.</div></div>
+          </div>
+          <div class="field">
+            <label for="donationAmount">Amount (RWF)</label>
+            <div class="amounts">
+              <button type="button" class="amount-btn" data-amount="5000">5,000</button>
+              <button type="button" class="amount-btn" data-amount="10000">10,000</button>
+              <button type="button" class="amount-btn" data-amount="25000">25,000</button>
+              <button type="button" class="amount-btn" data-amount="50000">50,000</button>
+            </div>
+            <input type="number" id="donationAmount" min="100" placeholder="Or type an amount" required>
+            <span class="hint" id="amountHint">Minimum 100 RWF.</span>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="paymentMethod">Pay with</label>
+              <select id="paymentMethod" required>
+                <option value="">Choose…</option>
+                <option value="mobile_money">Mobile Money (MTN or Airtel)</option>
+                <option value="credit_card">Debit or credit card</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="donationNote">Note <span class="muted">(optional)</span></label>
+              <input type="text" id="donationNote" maxlength="280" placeholder="Only you will see this">
+            </div>
+          </div>
+          <div class="pay-extra hidden" id="momoBox">
+            <div class="field" style="margin:0">
+              <label for="momoPhone">Mobile Money number</label>
+              <input type="tel" id="momoPhone" placeholder="07X XXX XXXX">
+              <span class="hint">You'll confirm the payment on your phone.</span>
+            </div>
+          </div>
+          <div class="pay-extra hidden" id="cardBox">
+            <div class="note-box"><svg class="icon" aria-hidden="true"><use href="/icons.svg#lock"></use></svg><span>You'll enter your card on Flutterwave's page. We never see it.</span></div>
+          </div>
+          <label class="check"><input type="checkbox" id="donationAnonymous"> Keep my name off the public records</label>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="donateButton" style="margin-top:1.25rem">Donate</button>
+          <div id="paymentStatus" class="hidden" role="status"></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel-view" id="donor-history">
+      <div class="card">
+        <div class="card-head"><div><h2>My donations</h2><p>Every donation with its family, need and payment reference.</p></div></div>
+        <div id="donationHistory"><p class="muted">Loading…</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Local leader dashboard -->
+<section class="dash" id="leaderDash">
+  <aside class="dash-side">
+    <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#256b45"/><circle cx="21" cy="11" r="5" fill="#f4c534"/><path d="M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z" fill="#f3f6f1"/></svg>Empower Nyamagabe</a>
+    <div class="dash-user"><strong data-user-name>Leader</strong><span id="leaderSectorLabel">Local leader</span></div>
+    <nav class="dash-nav" aria-label="Leader menu">
+      <button type="button" class="active" data-view="leader-queue"><svg class="icon" aria-hidden="true"><use href="/icons.svg#clipboard-check"></use></svg>Families</button>
+      <button type="button" data-view="leader-guide"><svg class="icon" aria-hidden="true"><use href="/icons.svg#book-open"></use></svg>Guidelines</button>
+    </nav>
+    <p class="dash-tip">You can't approve a family you submitted. Another leader or the administrator reviews it.</p>
+    <button type="button" class="btn btn-ghost btn-block" data-action="home"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left"></use></svg> Back to website</button>
+  </aside>
+  <div class="dash-main">
+    <div class="dash-top">
+      <div><h1>Families in your sector</h1><p>Submit households and review families put forward by other leaders.</p></div>
+      <button type="button" class="btn btn-primary" data-action="submit-family"><svg class="icon" aria-hidden="true"><use href="/icons.svg#plus"></use></svg> Submit a family</button>
+    </div>
+
+    <div class="panel-view active" id="leader-queue">
+      <div class="stats">
+        <div class="stat"><span>Waiting for review</span><b id="leaderPending">0</b></div>
+        <div class="stat"><span>Approved</span><b id="leaderApproved">0</b></div>
+        <div class="stat"><span>Rejected</span><b id="leaderRejected">0</b></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>All submissions</h2><p>Pending families come first. Open one to see its private details.</p></div></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Code</th><th>Ubudehe</th><th>Need</th><th>Submitted by</th><th>Status</th><th></th></tr></thead>
+            <tbody id="leaderFamilies"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-view" id="leader-guide">
+      <div class="card guide">
+        <div class="card-head"><div><h2>Reviewing a family</h2></div></div>
+        <p>Decisions are based on the Ubudehe classification and what you know about households in your village. The platform records who submitted each family and who decided, so decisions can be checked later.</p>
+        <ul>
+          <li><strong>Check the household</strong> is in a lower Ubudehe category and has a real school fee or Mutuelle de Santé need.</li>
+          <li><strong>Keep the public description anonymous.</strong> Donors read it, so leave out names, phone numbers and the village.</li>
+          <li><strong>Give a reason when you reject.</strong> It is saved in the audit log.</li>
+          <li><strong>Taking part is voluntary.</strong> A family's choice never affects whether it gets other help.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Admin dashboard -->
+<section class="dash" id="adminDash">
+  <aside class="dash-side">
+    <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#256b45"/><circle cx="21" cy="11" r="5" fill="#f4c534"/><path d="M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z" fill="#f3f6f1"/></svg>Empower Nyamagabe</a>
+    <div class="dash-user"><strong data-user-name>Administrator</strong><span>Administrator</span></div>
+    <nav class="dash-nav" aria-label="Admin menu">
+      <button type="button" class="active" data-view="admin-overview"><svg class="icon" aria-hidden="true"><use href="/icons.svg#house"></use></svg>Overview</button>
+      <button type="button" data-view="admin-families"><svg class="icon" aria-hidden="true"><use href="/icons.svg#clipboard-check"></use></svg>Families</button>
+      <button type="button" data-view="admin-donations"><svg class="icon" aria-hidden="true"><use href="/icons.svg#money-bill-wave"></use></svg>Donations</button>
+      <button type="button" data-view="admin-leaders"><svg class="icon" aria-hidden="true"><use href="/icons.svg#user-tie"></use></svg>Local leaders</button>
+      <button type="button" data-view="admin-reports"><svg class="icon" aria-hidden="true"><use href="/icons.svg#chart-column"></use></svg>Reports</button>
+      <button type="button" data-view="admin-audit"><svg class="icon" aria-hidden="true"><use href="/icons.svg#list"></use></svg>Audit log</button>
+    </nav>
+    <button type="button" class="btn btn-ghost btn-block" data-action="home"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left"></use></svg> Back to website</button>
+  </aside>
+  <div class="dash-main">
+    <div class="dash-top">
+      <div><h1>Overview</h1><p>Families, donations and reports across all sectors.</p></div>
+      <button type="button" class="btn btn-primary" data-action="submit-family"><svg class="icon" aria-hidden="true"><use href="/icons.svg#plus"></use></svg> Submit a family</button>
+    </div>
+
+    <div class="panel-view active" id="admin-overview">
+      <div class="stats">
+        <div class="stat"><span>Raised so far</span><b id="adminTotal">RWF 0</b></div>
+        <div class="stat"><span>Verified families</span><b id="adminVerified">0</b></div>
+        <div class="stat"><span>Waiting for review</span><b id="adminPending">0</b></div>
+      </div>
+      <div class="columns">
+        <div class="card">
+          <div class="card-head"><div><h2>Recent donations</h2></div></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Donor</th><th>Family</th><th>Amount</th><th>Need</th><th>Date</th><th>Status</th></tr></thead>
+              <tbody data-admin-donations><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><h2>Waiting for review</h2></div></div>
+          <div class="table-wrap">
+            <table style="min-width:0">
+              <thead><tr><th>Code</th><th>Sector</th><th></th></tr></thead>
+              <tbody id="adminPendingList"><tr><td colspan="3" class="empty">Loading…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-view" id="admin-families">
+      <div class="card">
+        <div class="card-head">
+          <div><h2>All families</h2><p>Review, approve or reject submitted families.</p></div>
+          <div class="btn-row">
+            <button type="button" class="btn btn-outline btn-sm" data-export="families.csv"><svg class="icon" aria-hidden="true"><use href="/icons.svg#file-csv"></use></svg> CSV</button>
+            <button type="button" class="btn btn-outline btn-sm" data-export="families.xlsx"><svg class="icon" aria-hidden="true"><use href="/icons.svg#file-excel"></use></svg> Excel</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Code</th><th>Sector</th><th>Ubudehe</th><th>Need</th><th>Raised</th><th>Status</th><th></th></tr></thead>
+            <tbody id="adminFamilies"><tr><td colspan="7" class="empty">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-view" id="admin-donations">
+      <div class="card">
+        <div class="card-head">
+          <div><h2>Donations</h2><p>The latest 100 donations.</p></div>
+          <div class="btn-row">
+            <button type="button" class="btn btn-outline btn-sm" data-export="donations.csv"><svg class="icon" aria-hidden="true"><use href="/icons.svg#file-csv"></use></svg> CSV</button>
+            <button type="button" class="btn btn-outline btn-sm" data-export="donations.xlsx"><svg class="icon" aria-hidden="true"><use href="/icons.svg#file-excel"></use></svg> Excel</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Donor</th><th>Family</th><th>Amount</th><th>Need</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody data-admin-donations></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-view" id="admin-leaders">
+      <div class="card">
+        <div class="card-head"><div><h2>Add a local leader</h2><p>Leaders can only submit and review families in their own sector.</p></div></div>
+        <form id="leaderForm">
+          <div class="form-row">
+            <div class="field"><label for="leaderName">Full name</label><input type="text" id="leaderName" required></div>
+            <div class="field"><label for="leaderSector">Sector</label><input type="text" id="leaderSector" placeholder="e.g. Gasaka" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="leaderPhone">Phone</label><input type="tel" id="leaderPhone" placeholder="07X XXX XXXX"></div>
+            <div class="field"><label for="leaderEmail">Email <span class="muted">(optional if phone is given)</span></label><input type="email" id="leaderEmail"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="leaderPassword">Temporary password</label><input type="password" id="leaderPassword" minlength="6" required></div>
+            <div class="field" style="align-self:end"><button type="submit" class="btn btn-primary btn-block">Create account</button></div>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><h2>Leaders</h2></div></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Sector</th><th>Contact</th><th>Submitted</th><th>Reviewed</th></tr></thead>
+            <tbody id="leadersList"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-view" id="admin-reports">
+      <div class="card">
+        <div class="card-head">
+          <div><h2>Report</h2><p>Donations and verified families.</p></div>
+          <button type="button" class="btn btn-outline btn-sm" data-action="refresh-report"><svg class="icon" aria-hidden="true"><use href="/icons.svg#rotate"></use></svg> Refresh</button>
+        </div>
+        <div id="reportBox"><p class="muted">Loading…</p></div>
+      </div>
+    </div>
+
+    <div class="panel-view" id="admin-audit">
+      <div class="card">
+        <div class="card-head">
+          <div><h2>Audit log</h2><p>The latest 200 actions.</p></div>
+          <button type="button" class="btn btn-outline btn-sm" data-action="refresh-audit"><svg class="icon" aria-hidden="true"><use href="/icons.svg#rotate"></use></svg> Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Time</th><th>Who</th><th>Action</th><th>Record</th><th>Details</th></tr></thead>
+            <tbody id="auditList"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Submit a family -->
+<div class="modal" id="familyModal" role="dialog" aria-modal="true" aria-labelledby="familyModalTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="familyModalTitle">Submit a family</h2>
+      <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="muted" style="margin-bottom:1.25rem">Name, phone, cell and village stay private. Donors only see the family code, sector, Ubudehe category and the public description.</p>
+      <form id="familyForm">
+        <div class="form-row">
+          <div class="field"><label for="familyHeadName">Head of household</label><input type="text" id="familyHeadName" maxlength="120" required></div>
+          <div class="field"><label for="familyPhone">Phone <span class="muted">(optional)</span></label><input type="tel" id="familyPhone" placeholder="07X XXX XXXX"></div>
+        </div>
+        <div class="form-row">
+          <div class="field" id="familySectorField"><label for="familySector">Sector</label><input type="text" id="familySector" maxlength="80"></div>
+          <div class="field"><label for="familyCell">Cell</label><input type="text" id="familyCell" maxlength="80"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="familyVillage">Village (Umudugudu)</label><input type="text" id="familyVillage" maxlength="80"></div>
+          <div class="field">
+            <label for="familyUbudehe">Ubudehe category</label>
+            <select id="familyUbudehe" required>
+              <option value="">Choose…</option>
+              <option value="1">Category 1</option>
+              <option value="2">Category 2</option>
+              <option value="3">Category 3</option>
+              <option value="4">Category 4</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="familyNeedType">Need</label>
+            <select id="familyNeedType" required>
+              <option value="">Choose…</option>
+              <option value="education">School fees</option>
+              <option value="health">Mutuelle de Santé</option>
+            </select>
+          </div>
+          <div class="field"><label for="familyNeedAmount">Amount needed (RWF)</label><input type="number" id="familyNeedAmount" min="1000" max="5000000" required></div>
+        </div>
+        <div class="field"><label for="familyHousehold">Household size <span class="muted">(optional)</span></label><input type="number" id="familyHousehold" min="1" max="30"></div>
+        <div class="field"><label for="familyNeedDescription">Public description</label><textarea id="familyNeedDescription" rows="2" maxlength="400" required placeholder="e.g. Term 2 school fees for two children in lower secondary"></textarea><span class="hint">Donors see this. Leave out names, phone numbers and the village.</span></div>
+        <div class="field"><label for="familyNotes">Notes for the reviewer</label><textarea id="familyNotes" rows="3" maxlength="1000" required placeholder="How you know the household and why the need is real"></textarea></div>
+        <div class="modal-actions"><button type="submit" class="btn btn-primary btn-block">Send for review</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Review a family -->
+<div class="modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="reviewTitle">Review family</h2>
+      <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="reviewDetails"></div>
+      <div id="reviewActions" style="margin-top:1.25rem">
+        <div class="field"><label for="reviewNotes">Notes <span class="muted">(required when rejecting)</span></label><textarea id="reviewNotes" rows="3" maxlength="500"></textarea></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-primary btn-block" data-decision="approve">Approve</button>
+          <button type="button" class="btn btn-outline btn-block" data-decision="reject">Reject</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/common.js"></script>
+<script src="/js/dashboard.js"></script>
+<script src="/js/families.js"></script>
+<script src="/js/donor.js"></script>
+<script src="/js/leader.js"></script>
+<script src="/js/admin.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

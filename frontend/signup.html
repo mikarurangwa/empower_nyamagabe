@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create an account | Empower Nyamagabe</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d5a3a'/%3E%3Ccircle cx='21' cy='11' r='5' fill='%23f4c534'/%3E%3Cpath d='M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z' fill='%23f3f6f1'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="auth">
+    <section class="auth-side">
+      <div class="auth-side-inner">
+        <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#256b45"/><circle cx="21" cy="11" r="5" fill="#f4c534"/><path d="M0 24c5-6 10-8 15-5 5-5 11-6 17-1v6a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8z" fill="#f3f6f1"/></svg>Empower Nyamagabe</a>
+        <h1>Support a family in Nyamagabe</h1>
+        <p>Choose a verified family, pay with Mobile Money or card, and keep a record of every donation you make.</p>
+        <p style="margin-top:1.5rem"><a class="back-link" href="/"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left"></use></svg> Back to the website</a></p>
+      </div>
+      <svg class="hills" viewBox="0 0 1440 240" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+      <circle cx="1150" cy="72" r="46" fill="#f4c534"/>
+      <path d="M0,125 C140,75 300,65 460,100 C600,130 720,75 880,63 C1040,51 1180,105 1300,97 C1370,93 1410,85 1440,81 V240 H0Z" fill="#2a7049"/>
+      <path d="M0,175 C200,115 420,110 600,145 C760,175 900,125 1080,117 C1240,110 1360,145 1440,135 V240 H0Z" fill="#3d8c5c"/>
+      <g fill="none" stroke="#2f7a4d" stroke-width="7" stroke-linecap="round" stroke-dasharray="0.5 14"><path d="M0,189 C200,129 420,124 600,159 C760,189 900,139 1080,131 C1240,124 1360,159 1440,149"/><path d="M0,203 C200,143 420,138 600,173 C760,203 900,153 1080,145 C1240,138 1360,173 1440,163"/><path d="M0,217 C200,157 420,152 600,187 C760,217 900,167 1080,159 C1240,152 1360,187 1440,177"/><path d="M0,231 C200,171 420,166 600,201 C760,231 900,181 1080,173 C1240,166 1360,201 1440,191"/></g>
+      <path d="M0,212 C240,182 520,196 760,204 C1000,212 1240,186 1440,198 V240 H0Z" fill="#123a26"/>
+    </svg>
+    </section>
+    <main class="auth-main">
+      <div class="auth-card">
+        <h2>Create an account</h2>
+        <p>Give a phone number, an email address, or both.</p>
+        <div class="alert" id="formAlert" role="alert" hidden></div>
+        <form id="signupForm">
+          <div class="field">
+            <label for="signupName">Full name</label>
+            <input id="signupName" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="signupPhone">Phone</label>
+              <input id="signupPhone" type="tel" autocomplete="tel" placeholder="07X XXX XXXX">
+            </div>
+            <div class="field">
+              <label for="signupEmail">Email</label>
+              <input id="signupEmail" type="email" autocomplete="email">
+            </div>
+          </div>
+          <div class="field">
+            <label for="signupPassword">Password</label>
+            <div class="password"><input id="signupPassword" type="password" minlength="6" autocomplete="new-password" required><button type="button" data-toggle-password aria-label="Show password"><svg class="icon" aria-hidden="true"><use href="/icons.svg#eye"></use></svg></button></div>
+            <span class="hint">At least 6 characters.</span>
+          </div>
+          <div class="field">
+            <label for="signupConfirm">Confirm password</label>
+            <input id="signupConfirm" type="password" autocomplete="new-password" required>
+          </div>
+          <label class="check" style="margin-bottom:1rem"><input type="checkbox" required> <span>I agree to the <a href="/terms">terms</a> and <a href="/privacy">privacy policy</a>.</span></label>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="signupButton">Create account</button>
+        </form>
+        <p class="auth-foot">Already have an account? <a href="/login">Log in</a></p>
+      </div>
+    </main>
+  </div>
+  <script src="/js/common.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
