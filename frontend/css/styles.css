@@ -85,6 +85,11 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 .menu-toggle { display: none; margin-left: auto; background: none; border: 0; color: var(--white); font-size: 1.3rem; padding: 0.4rem; cursor: pointer; }
 .mobile-menu { display: none; background: var(--green-700); padding: 0.5rem 1.5rem 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 .mobile-menu.open { display: block; }
+
+/* On the home page the header sits on the photo until you scroll */
+.header-over { transition: background-color .25s, box-shadow .25s; background: transparent; }
+.header-over.solid, .header-over:has(.mobile-menu.open) { background: var(--green-700); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12); }
+.header-over .mobile-menu { background: transparent; }
 .mobile-menu a:not(.btn) { display: block; padding: 0.75rem 0; color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 .mobile-menu .header-actions { margin-top: 1rem; }
 .mobile-menu .btn { flex: 1; }
@@ -92,6 +97,7 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 /* ---------- Hero ---------- */
 .hero {
   color: var(--white); position: relative; overflow: hidden;
+  margin-top: calc(-1 * var(--header-h)); padding-top: var(--header-h);
   background:
     linear-gradient(180deg, rgba(18, 58, 38, 0.86) 0%, rgba(29, 90, 58, 0.78) 55%, rgba(29, 90, 58, 0.92) 100%),
     url('/images/school-road.jpg') center 35% / cover no-repeat var(--green-700);
