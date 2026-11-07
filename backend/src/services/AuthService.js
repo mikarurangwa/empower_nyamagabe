@@ -26,6 +26,16 @@ class AuthService {
     return bcrypt.hash(password, this.settings.bcryptRounds);
   }
 
+  // Creates the first admin from .env if there is no admin yet
+  async ensureAdmin() {
+    if (await this.users.findAdmin()) return 'exists';
+    const { email, password } = this.settings.admin;
+    if (!password) return 'missing-password';
+    await this.users.createAdmin(email, await this.#hash(password));
+    await this.audit.add(null, 'admin_account_created', 'users', null, { email });
+    return 'created';
+  }
+
   async userFromToken(token) {
     if (!token) throw new UnauthorizedError();
     let payload;
