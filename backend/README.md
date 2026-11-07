@@ -1,4 +1,4 @@
-# Empower Nyamagabe - Backend
+# Empower Nyamagabe – Backend
 
 The REST API behind Empower Nyamagabe. It handles accounts, family verification, Flutterwave payments, receipts and admin reports. It also serves the frontend, so one `npm start` runs the whole site.
 
@@ -11,10 +11,16 @@ You need Node.js 20 or newer.
 ```bash
 cd backend
 npm install
+cp .env.example .env      # Windows: copy .env.example .env
+```
+
+Open `.env` and set `JWT_SECRET` (any long random string) and `ADMIN_PASSWORD`. Then:
+
+```bash
 npm start
 ```
 
-Open http://localhost:3000. The database file is created on the first run, and so is the admin account from `.env`.
+Open http://localhost:3000. The database is created on the first run, and so is the admin account, using `ADMIN_EMAIL` and `ADMIN_PASSWORD`. There is no default password: without `ADMIN_PASSWORD` the server starts but creates no admin.
 
 Use `npm run dev` to restart automatically while you work.
 
@@ -25,7 +31,7 @@ Settings live in `backend/.env`.
 | Variable | Needed | What it does |
 | --- | --- | --- |
 | `JWT_SECRET` | Yes | Signs login tokens. Any long random string. |
-| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Yes | The first admin account. |
+| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | Yes | The first admin account. Required in production; there is no default password. |
 | `APP_BASE_URL` | Yes | `http://localhost:3000` locally. Used in payment and email links. |
 | `FLW_SECRET_KEY` | For payments | Flutterwave secret key. |
 | `FLW_WEBHOOK_SECRET_HASH` | No | Only if you set up a Flutterwave webhook. |
@@ -37,7 +43,7 @@ Settings live in `backend/.env`.
 
 ```
 backend/
-├── migrations/              Database tables, indexes and the first admin account
+├── migrations/              Database tables and indexes
 ├── src/
 │   ├── config/              Environment settings, database class, constants
 │   ├── controllers/         Read the request, call a service, send the response
@@ -73,8 +79,8 @@ backend/
 ## Tests
 
 ```bash
-npm test                  # all 70 tests
-npm run test:unit         # 33 unit tests
+npm test                  # all 73 tests
+npm run test:unit         # 36 unit tests
 npm run test:integration  # 37 integration tests
 npm run test:load         # load test (CONNECTIONS=20 SECONDS=10, NO_INDEXES=1 to compare)
 ```
@@ -137,10 +143,10 @@ Donors and the public only ever see a family code (for example `NYA-0007`), the 
 
 ## Deployment
 
-The app runs as one Node service. On a host like Render:
+The app runs as one Node service. The repository includes `render.yaml`, so on Render you can choose **New > Blueprint**, pick the repository, and fill in the secret values when asked. To set it up by hand instead:
 
 1. Build command `npm install`, start command `npm start`, root directory `backend`.
 2. Attach a persistent disk and point `DB_PATH` at it, for example `/var/data/empower_nyamagabe.db`. Without one, SQLite data is lost on every deploy.
-3. Set the environment variables above, with `NODE_ENV=production` and `APP_BASE_URL` set to the live URL.
+3. Set the environment variables above, with `NODE_ENV=production` and `APP_BASE_URL` set to the live URL. In production the server refuses to start without `JWT_SECRET`, `ADMIN_PASSWORD` and `APP_BASE_URL`.
 4. Use `/api/public/health` as the health check.
-5. In Flutterwave, set the webhook to `<url>/api/payments/flutterwave/webhook`
+5. In Flutterwave, set the webhook to `<your-url>/api/payments/flutterwave/webhook` with the same secret hash as `FLW_WEBHOOK_SECRET_HASH`. Without the hash, webhooks are ignored and payments are confirmed only when the donor returns from checkout.
