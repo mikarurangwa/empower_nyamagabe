@@ -16,6 +16,7 @@ const FakeGateway = require('./FakeGateway');
 async function startServer() {
   await db.connect(':memory:');
   await runMigrations();
+  await services.auth.ensureAdmin();
 
   const gateway = new FakeGateway();
   services.donations.gateway = gateway;
