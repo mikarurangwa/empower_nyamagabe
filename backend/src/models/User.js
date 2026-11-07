@@ -24,6 +24,17 @@ class User extends BaseModel {
     );
   }
 
+  findAdmin() {
+    return this.db.get('SELECT id FROM users WHERE is_admin = 1 LIMIT 1');
+  }
+
+  createAdmin(email, passwordHash) {
+    return this.insert(
+      ['name', 'email', 'password_hash', 'is_admin', 'role'],
+      ['Administrator', email, passwordHash, 1, 'admin']
+    );
+  }
+
   updatePassword(id, passwordHash) {
     return this.db.run('UPDATE users SET password_hash = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?', [passwordHash, id]);
   }
