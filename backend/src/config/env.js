@@ -16,7 +16,7 @@ module.exports = {
 
   admin: {
     email: (process.env.ADMIN_EMAIL || 'admin@empowernyamagabe.org').toLowerCase(),
-    password: process.env.ADMIN_PASSWORD || 'admin123',
+    password: process.env.ADMIN_PASSWORD || '',
   },
 
   flutterwave: {
