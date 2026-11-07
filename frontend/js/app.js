@@ -68,10 +68,24 @@ $('mobileMenu').addEventListener('click', (e) => {
   if (e.target.closest('a, button')) $('mobileMenu').classList.remove('open');
 });
 
+const header = $('siteHeader');
+const paintHeader = () => header.classList.toggle('solid', window.scrollY > 40);
+window.addEventListener('scroll', paintHeader, { passive: true });
+
+const band = document.querySelector('.cta-band');
+const bandWatcher = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) {
+    band.classList.add('photo');
+    bandWatcher.disconnect();
+  }
+}, { rootMargin: '600px' });
+bandWatcher.observe(band);
+
 // Start
 
 state.user = session.get().user;
 updateHeader();
+paintHeader();
 loadFamilies();
 
 const params = new URLSearchParams(window.location.search);
