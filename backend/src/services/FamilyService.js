@@ -2,7 +2,7 @@ const { NEED_LABELS } = require('../config/constants');
 const { readSubmission, readDecision, checkCanDecide } = require('../utils/familyRules');
 const { familyCode, remainingNeed } = require('../utils/helpers');
 const { rankFamilies } = require('../utils/ranking');
-const { NotFoundError } = require('../utils/AppError');
+const { NotFoundError, ValidationError } = require('../utils/AppError');
 
 class FamilyService {
   constructor({ families, audit }) {
@@ -12,6 +12,9 @@ class FamilyService {
 
   async submit(user, body) {
     const f = readSubmission(body, user);
+    const existing = await this.families.findDuplicate(f);
+    if (existing) throw new ValidationError(`This family has already been submitted as ${existing.family_code}`);
+
     const id = await this.families.create({ ...f, submittedBy: user.id });
     const code = familyCode(id);
     await this.families.setCode(id, code);
