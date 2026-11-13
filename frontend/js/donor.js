@@ -1,127 +1,176 @@
-// Local leader dashboard, plus family review and submission (also used by the admin)
+// Donor dashboard: choosing a family, donating and donation history
 
-async function loadQueue() {
-  const { data } = await api('/families/queue');
-  state.queue = data;
+function chooseFamily(id) {
+  const family = state.families.find((f) => String(f.id) === String(id));
+  if (!family) return;
+
+  if (!state.user) {
+    sessionStorage.setItem('en_family', family.id);
+    window.location.href = '/login?next=dashboard';
+    return;
+  }
+  if (!$('donorDash').classList.contains('visible')) {
+    document.body.classList.add('in-dashboard');
+    $('donorDash').classList.add('visible');
+    loadDonor();
+  }
+
+  $('donationFamilyId').value = family.id;
+  const box = $('chosenFamily');
+  box.className = 'chosen';
+  box.innerHTML = `
+    ${icon('people-roof')}
+    <div>
+      <strong>${escapeHtml(family.familyCode)}, ${escapeHtml(NEED_LABELS[family.needType])}</strong>
+      <div class="muted">${escapeHtml(family.description)}</div>
+      <div class="muted">${money(family.remaining)} still needed in ${escapeHtml(family.sector)} sector</div>
+    </div>`;
+  $('donationAmount').max = family.remaining;
+  $('donationAmount').value = '';
+  document.querySelectorAll('.amount-btn').forEach((btn) => {
+    btn.classList.remove('active');
+    btn.disabled = Number(btn.dataset.amount) > family.remaining;
+  });
+  $('amountHint').textContent = `Between 100 and ${family.remaining.toLocaleString('en-US')} RWF.`;
+  showView($('donorDash'), 'donor-give');
+  window.scrollTo(0, 0);
 }
 
-function reviewButton(f) {
-  return `<button type="button" class="btn btn-outline btn-sm" data-review="${f.id}">${f.verification_status === 'pending' ? 'Review' : 'View'}</button>`;
+function donationRow(d) {
+  const receipt = d.status === 'completed'
+    ? `<a class="btn btn-outline btn-sm" href="/receipt?tx_ref=${encodeURIComponent(d.transaction_id)}">Receipt</a>`
+    : '';
+  return `
+    <div class="donation">
+      <div>
+        <b>${money(d.amount)}</b>
+        <div class="muted">${escapeHtml(d.family_code || '')} ${escapeHtml(NEED_LABELS[d.purpose] || d.purpose)}, ${formatDate(d.created_at)}</div>
+        ${d.note ? `<div class="muted">"${escapeHtml(d.note)}"</div>` : ''}
+        <div class="ref">Ref ${escapeHtml(d.transaction_id)}</div>
+      </div>
+      <div class="donation-side">${statusBadge(d.status)}${receipt}</div>
+    </div>`;
 }
 
-function needCell(f) {
-  return `${escapeHtml(NEED_LABELS[f.support_type])}<div class="muted">${money(f.need_amount)}</div>`;
-}
-
-async function loadLeader() {
-  $('leaderSectorLabel').textContent = state.user.sector ? `${state.user.sector} sector` : 'No sector yet';
+async function loadDonor() {
+  await loadFamilies();
   try {
-    await loadQueue();
+    const [history, totals] = await Promise.all([
+      api(`/donations/user/${state.user.id}`),
+      api(`/donations/totals/${state.user.id}`),
+    ]);
+    const rows = history.data;
+    $('donationHistory').innerHTML = rows.length
+      ? rows.map(donationRow).join('')
+      : '<p class="empty-state">You haven\'t made a donation yet.</p>';
+    $('recentDonations').innerHTML = rows.length
+      ? rows.slice(0, 4).map(donationRow).join('')
+      : '<p class="empty-state">Your donations will show up here.</p>';
+
+    $('donorTotal').textContent = money(totals.data.totalDonated);
+    $('donorCount').textContent = totals.data.donationCount;
+    $('donorFamilies').textContent = totals.data.familiesHelped;
   } catch (err) {
     if (err.status === 401) return expiredSession();
-    return toast(err.message, 'error');
-  }
-
-  const count = (s) => state.queue.filter((f) => f.verification_status === s).length;
-  $('leaderPending').textContent = count('pending');
-  $('leaderApproved').textContent = count('approved');
-  $('leaderRejected').textContent = count('rejected');
-
-  $('leaderFamilies').innerHTML = state.queue.length
-    ? state.queue.map((f) => `
-        <tr>
-          <td><strong>${escapeHtml(f.family_code)}</strong></td>
-          <td>${escapeHtml(f.ubudehe_category)}</td>
-          <td>${needCell(f)}</td>
-          <td>${escapeHtml(f.submitted_by_name || '')}</td>
-          <td>${statusBadge(f.verification_status)}</td>
-          <td>${reviewButton(f)}</td>
-        </tr>`).join('')
-    : '<tr><td colspan="6" class="empty">No families in your sector yet.</td></tr>';
-}
-
-function openReview(id) {
-  const f = state.queue.find((row) => String(row.id) === String(id));
-  if (!f) return;
-  state.reviewing = f.id;
-
-  const ownSubmission = roleOf(state.user) === 'leader' && Number(f.submitted_by) === Number(state.user.id);
-  const canDecide = f.verification_status === 'pending' && !ownSubmission;
-  const row = (label, value) =>
-    `<div class="detail-row"><span>${label}</span><strong>${escapeHtml(value || '–')}</strong></div>`;
-
-  $('reviewTitle').textContent = `Family ${f.family_code}`;
-  $('reviewDetails').innerHTML = [
-    row('Head of household', f.name),
-    row('Phone', f.phone),
-    row('Sector', f.sector),
-    row('Cell', f.cell),
-    row('Village', f.village),
-    row('Ubudehe category', f.ubudehe_category),
-    row('Household size', f.household_size),
-    row('Need', NEED_LABELS[f.support_type]),
-    row('Amount needed', money(f.need_amount)),
-    row('Public description', f.need_description),
-    row('Notes for reviewer', f.notes),
-    row('Submitted by', f.submitted_by_name),
-    row('Status', f.verification_status),
-    f.verification_status !== 'pending' ? row('Reviewed by', f.verified_by_name) + row('Review notes', f.verification_notes) : '',
-    ownSubmission && f.verification_status === 'pending'
-      ? '<p class="alert alert-info" style="margin-top:1rem">You submitted this family, so someone else has to review it.</p>'
-      : '',
-  ].join('');
-
-  $('reviewActions').classList.toggle('hidden', !canDecide);
-  $('reviewNotes').value = '';
-  $('reviewModal').classList.add('open');
-}
-
-async function decide(decision) {
-  const notes = $('reviewNotes').value.trim();
-  if (decision === 'reject' && notes.length < 5) return toast('Write a short reason for rejecting.', 'error');
-
-  try {
-    const res = await post(`/families/${state.reviewing}/verify`, { decision, notes });
-    toast(res.message);
-    $('reviewModal').classList.remove('open');
-    roleOf(state.user) === 'admin' ? loadAdmin() : loadLeader();
-    loadFamilies();
-  } catch (err) {
     toast(err.message, 'error');
   }
+
+  // A family picked before logging in
+  const pending = sessionStorage.getItem('en_family');
+  if (pending) {
+    sessionStorage.removeItem('en_family');
+    chooseFamily(pending);
+  }
 }
 
-function openFamilyForm() {
-  const isAdmin = roleOf(state.user) === 'admin';
-  $('familySectorField').classList.toggle('hidden', !isAdmin);
-  $('familySector').required = isAdmin;
-  $('familyModal').classList.add('open');
+function setPaymentStatus(html, type) {
+  const el = $('paymentStatus');
+  el.className = type;
+  el.innerHTML = html;
 }
 
-async function submitFamily(e) {
+async function checkPayment(txRef) {
+  const { status } = await api(`/donations/status/${encodeURIComponent(txRef)}`);
+  if (status === 'completed') setPaymentStatus(`Payment confirmed. Reference ${escapeHtml(txRef)}`, 'success');
+  else if (status === 'failed') setPaymentStatus(`The payment failed or was cancelled. Reference ${escapeHtml(txRef)}`, 'error');
+  return status;
+}
+
+// Keeps checking for up to two minutes while the donor pays in the other tab
+function watchPayment(txRef) {
+  const started = Date.now();
+  const tick = async () => {
+    if (Date.now() - started > 120000) return;
+    try {
+      const status = await checkPayment(txRef);
+      if (status !== 'pending') return loadDonor();
+    } catch (err) {
+      // try again on the next tick
+    }
+    setTimeout(tick, 4000);
+  };
+  setTimeout(tick, 4000);
+}
+
+async function submitDonation(e) {
   e.preventDefault();
-  const value = (id) => $(id).value.trim();
+  const familyId = $('donationFamilyId').value;
+  const amount = Number($('donationAmount').value);
+  const paymentMethod = $('paymentMethod').value;
+
+  if (!familyId) return setPaymentStatus('Choose a family first.', 'error');
+  if (!amount || amount < 100) return setPaymentStatus('The minimum donation is 100 RWF.', 'error');
+  if (!paymentMethod) return setPaymentStatus('Choose how you want to pay.', 'error');
+
+  const button = $('donateButton');
+  button.disabled = true;
+  button.innerHTML = '<span class="spinner"></span> Opening checkout…';
+
+  // Open the tab right away so the browser doesn't block it as a popup
+  const checkout = window.open('', '_blank');
+
   try {
-    const res = await post('/families/submit', {
-      headName: value('familyHeadName'),
-      phone: value('familyPhone'),
-      sector: value('familySector'),
-      cell: value('familyCell'),
-      village: value('familyVillage'),
-      ubudeheCategory: value('familyUbudehe'),
-      householdSize: value('familyHousehold'),
-      needType: value('familyNeedType'),
-      needAmount: value('familyNeedAmount'),
-      needDescription: value('familyNeedDescription'),
-      notes: value('familyNotes'),
+    const { paymentLink, donation } = await post('/donations/create', {
+      familyId: Number(familyId),
+      amount,
+      paymentMethod,
+      paymentDetails: { phoneNumber: $('momoPhone').value.trim() },
+      note: $('donationNote').value.trim(),
+      isAnonymous: $('donationAnonymous').checked,
     });
-    toast(res.message);
-    $('familyForm').reset();
-    $('familyModal').classList.remove('open');
-    roleOf(state.user) === 'admin' ? loadAdmin() : loadLeader();
+
+    if (checkout) checkout.location.href = paymentLink;
+    setPaymentStatus(`
+      <strong>Finish paying in the Flutterwave tab.</strong>
+      <div>This page updates once the payment is confirmed. Reference ${escapeHtml(donation.txRef)}</div>
+      <div class="btn-row">
+        <a class="btn btn-outline btn-sm" href="${escapeHtml(paymentLink)}" target="_blank" rel="noopener">Open checkout again</a>
+        <button type="button" class="btn btn-primary btn-sm" data-check-payment="${escapeHtml(donation.txRef)}">Check payment</button>
+      </div>`, 'processing');
+    watchPayment(donation.txRef);
   } catch (err) {
-    toast(err.message, 'error');
+    if (checkout) checkout.close();
+    setPaymentStatus(escapeHtml(err.message), 'error');
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Donate';
   }
 }
 
-document.getElementById('familyForm').addEventListener('submit', submitFamily);
+document.getElementById('donationForm').addEventListener('submit', submitDonation);
+
+document.getElementById('paymentMethod').addEventListener('change', (e) => {
+  $('momoBox').classList.toggle('hidden', e.target.value !== 'mobile_money');
+  $('cardBox').classList.toggle('hidden', e.target.value !== 'credit_card');
+});
+
+document.querySelectorAll('.amount-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.amount-btn').forEach((b) => b.classList.toggle('active', b === btn));
+    $('donationAmount').value = btn.dataset.amount;
+  });
+});
+
+document.getElementById('donationAmount').addEventListener('input', () => {
+  document.querySelectorAll('.amount-btn').forEach((b) => b.classList.remove('active'));
+});
