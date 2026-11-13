@@ -82,9 +82,13 @@ async function seed(t) {
   };
 }
 
+let familyCount = 0;
+
+// Each call gets a new head of household so the duplicate check does not block it
 function familyInput(overrides = {}) {
+  familyCount += 1;
   return {
-    headName: 'Private Name',
+    headName: `Private Name ${familyCount}`,
     phone: '0783000001',
     cell: 'Nyabivumu',
     village: 'Kigeme',
