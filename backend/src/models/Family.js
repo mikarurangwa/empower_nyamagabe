@@ -22,6 +22,17 @@ class Family extends BaseModel {
     );
   }
 
+  // A family already waiting or approved with the same head, sector and need
+  findDuplicate(f) {
+    return this.db.get(
+      `SELECT family_code FROM beneficiaries
+       WHERE lower(name) = lower(?) AND lower(sector) = lower(?) AND support_type = ?
+         AND verification_status IN ('pending', 'approved')
+       LIMIT 1`,
+      [f.headName, f.sector, f.needType]
+    );
+  }
+
   setCode(id, code) {
     return this.db.run('UPDATE beneficiaries SET family_code = ? WHERE id = ?', [code, id]);
   }
