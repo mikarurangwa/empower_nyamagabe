@@ -100,6 +100,9 @@ function openFamilyForm() {
 
 async function submitFamily(e) {
   e.preventDefault();
+  const button = $('familyForm').querySelector('button[type="submit"]');
+  if (button.disabled) return; // already sending, ignore a second click
+  button.disabled = true;
   const value = (id) => $(id).value.trim();
   try {
     const res = await post('/families/submit', {
@@ -121,6 +124,8 @@ async function submitFamily(e) {
     roleOf(state.user) === 'admin' ? loadAdmin() : loadLeader();
   } catch (err) {
     toast(err.message, 'error');
+  } finally {
+    button.disabled = false;
   }
 }
 
