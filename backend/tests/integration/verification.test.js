@@ -50,6 +50,15 @@ describe('family submission and verification', () => {
     assert.equal(again.status, 400);
   });
 
+  test('the same family cannot be submitted twice', async () => {
+    const body = familyInput();
+    const first = await t.call('POST', '/families/submit', { token: s.leader1, body });
+    const again = await t.call('POST', '/families/submit', { token: s.leader1, body });
+    assert.equal(first.status, 201);
+    assert.equal(again.status, 400);
+    assert.match(again.body.message, /already been submitted/);
+  });
+
   test('the public list never includes private details', async () => {
     const list = await t.call('GET', '/families/verified');
     assert.ok(list.body.data.length >= 1);
