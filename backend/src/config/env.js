@@ -7,6 +7,8 @@ module.exports = {
   port: Number(process.env.PORT) || 3000,
   appBaseUrl: process.env.APP_BASE_URL || '',
   dbPath: path.resolve(rootDir, process.env.DB_PATH || 'empower_nyamagabe.db'),
+  tursoUrl: process.env.TURSO_DATABASE_URL || '',
+  tursoToken: process.env.TURSO_AUTH_TOKEN || '',
   frontendDir: path.resolve(rootDir, '..', 'frontend'),
 
   jwtSecret: process.env.JWT_SECRET || '',
