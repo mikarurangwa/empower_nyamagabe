@@ -1,88 +1,31 @@
-// Page start-up and the click handling shared by every dashboard
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const path = require('path');
+const env = require('./src/config/env');
+const routes = require('./src/routes');
+const { securityHeaders } = require('./src/middlewares/security');
+const { notFoundHandler, errorHandler } = require('./src/middlewares/errorHandler');
 
-document.addEventListener('click', async (e) => {
-  const target = e.target;
+const app = express();
+const pages = ['login', 'signup', 'impact', 'receipt', 'reset-password', 'privacy', 'terms'];
 
-  const donate = target.closest('[data-donate]');
-  if (donate) return chooseFamily(donate.dataset.donate);
+app.set('trust proxy', 1);
+app.use(securityHeaders);
+app.use(cors());
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true }));
+if (env.nodeEnv !== 'test') app.use(morgan('dev'));
 
-  const review = target.closest('[data-review]');
-  if (review) return openReview(review.dataset.review);
+app.use('/api', routes);
 
-  const view = target.closest('[data-view]');
-  if (view) return showView(view.closest('.dash'), view.dataset.view);
-
-  const filter = target.closest('[data-filter]');
-  if (filter) {
-    const group = filter.parentElement;
-    group.querySelectorAll('[data-filter]').forEach((b) => b.classList.toggle('active', b === filter));
-    if (group.dataset.filterGroup === 'landing') {
-      state.landingFilter = filter.dataset.filter;
-      renderFamilies('landingFamilies', state.landingFilter);
-    } else {
-      state.dashFilter = filter.dataset.filter;
-      renderFamilies('dashFamilies', state.dashFilter);
-    }
-    return;
-  }
-
-  const decision = target.closest('[data-decision]');
-  if (decision) return decide(decision.dataset.decision);
-
-  const exportBtn = target.closest('[data-export]');
-  if (exportBtn) {
-    const file = exportBtn.dataset.export;
-    return download(`/admin/export/${file}`, file).catch((err) => toast(err.message, 'error'));
-  }
-
-  const check = target.closest('[data-check-payment]');
-  if (check) return checkPayment(check.dataset.checkPayment).catch((err) => toast(err.message, 'error'));
-
-  if (target.closest('[data-close]') || target.classList.contains('modal')) {
-    document.querySelectorAll('.modal.open').forEach((m) => m.classList.remove('open'));
-    return;
-  }
-
-  const action = target.closest('[data-action]');
-  if (!action) return;
-  switch (action.dataset.action) {
-    case 'dashboard': return openDashboard();
-    case 'logout': return logout();
-    case 'home': return showWebsite();
-    case 'submit-family': return openFamilyForm();
-    case 'refresh-report': return api('/admin/reports/summary').then((r) => renderReport(r.data));
-    case 'refresh-audit': return loadAudit();
-    default:
-  }
+// Frontend: serve the static files and allow /login instead of /login.html
+app.use(express.static(env.frontendDir));
+pages.forEach((page) => {
+  app.get(`/${page}`, (req, res) => res.sendFile(path.join(env.frontendDir, `${page}.html`)));
 });
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') document.querySelectorAll('.modal.open').forEach((m) => m.classList.remove('open'));
-});
+app.use(notFoundHandler);
+app.use(errorHandler);
 
-$('menuToggle').addEventListener('click', () => {
-  const open = $('mobileMenu').classList.toggle('open');
-  $('menuToggle').setAttribute('aria-expanded', open);
-});
-$('mobileMenu').addEventListener('click', (e) => {
-  if (e.target.closest('a, button')) $('mobileMenu').classList.remove('open');
-});
-
-const header = $('siteHeader');
-const paintHeader = () => header.classList.toggle('solid', window.scrollY > 40);
-window.addEventListener('scroll', paintHeader, { passive: true });
-
-// Start
-
-state.user = session.get().user;
-updateHeader();
-paintHeader();
-loadFamilies();
-
-const params = new URLSearchParams(window.location.search);
-const payment = params.get('payment');
-if (params.has('open') || payment) window.history.replaceState({}, '', window.location.pathname);
-
-if (params.get('open') === 'dashboard' || payment === 'success') openDashboard();
-if (payment === 'success') toast('Payment confirmed. Thank you!');
-if (payment === 'failed') toast('The payment failed or was cancelled.', 'error');
+module.exports = app;
