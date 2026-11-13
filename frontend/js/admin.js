@@ -116,6 +116,9 @@ async function loadAdmin() {
 
 async function createLeader(e) {
   e.preventDefault();
+  const button = $('leaderForm').querySelector('button[type="submit"]');
+  if (button.disabled) return;
+  button.disabled = true;
   const value = (id) => $(id).value.trim();
   try {
     const res = await post('/admin/leaders', {
@@ -130,6 +133,8 @@ async function createLeader(e) {
     loadAdmin();
   } catch (err) {
     toast(err.message, 'error');
+  } finally {
+    button.disabled = false;
   }
 }
 
